@@ -1,14 +1,136 @@
---- ---
-
-/* Tailwind CSS base styles */
-*,
-::before,
-::after {
-    box-sizing: border-box;
-    border-width: 0;
-    border-style: solid;
-    border-color: #e5e7eb;
+.blog-page .highlight pre,
+.blog-page pre.highlight {
+    background-color: #1e293b;
+    color: #f1f5f9;
+    padding: 1em;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    font-size: 0.98em;
+    margin: 1.5em 0;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
 }
+
+.blog-page .highlight .c {
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* Comment */
+.blog-page .highlight .k {
+    color: #38bdf8;
+}
+
+/* Keyword */
+.blog-page .highlight .s {
+    color: #facc15;
+}
+
+/* String */
+.blog-page .highlight .na {
+    color: #f472b6;
+}
+
+/* Name attribute */
+.blog-page .highlight .nb {
+    color: #f472b6;
+}
+
+/* Name builtin */
+.blog-page .highlight .nc {
+    color: #f472b6;
+}
+
+/* Name class */
+.blog-page .highlight .no {
+    color: #f472b6;
+}
+
+/* Name constant */
+.blog-page .highlight .nd {
+    color: #f472b6;
+}
+
+/* Name decorator */
+.blog-page .highlight .nf {
+    color: #f472b6;
+}
+
+/* Name function */
+.blog-page .highlight .nt {
+    color: #38bdf8;
+}
+
+/* Name tag */
+.blog-page .highlight .o {
+    color: #f472b6;
+}
+
+/* Operator */
+.blog-page .highlight .m {
+    color: #facc15;
+}
+
+/* Number */
+.blog-page .highlight .p {
+    color: #f1f5f9;
+}
+
+/* Punctuation */
+.blog-page .highlight .err {
+    color: #ef4444;
+    background: #fee2e2;
+}
+
+/* Markdown content styling for blog posts */
+.blog-page code {
+    background-color: #f3f4f6;
+    color: #d6336c;
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.95em;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+}
+
+.blog-page pre {
+    background-color: #f3f4f6;
+    color: #1f2937;
+    padding: 1em;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    font-size: 0.98em;
+    margin: 1.5em 0;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+}
+
+.blog-page pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.blog-page code {
+    background-color: #f3f4f6;
+    color: #d6336c;
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.95em;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+}
+
+.blog-page blockquote {
+    border-left: 4px solid #2563eb;
+    background: #f9fafb;
+    color: #374151;
+    padding: 0.75em 1.5em;
+    margin: 1.5em 0;
+    border-radius: 0.5rem;
+    font-style: italic;
+}
+
 
 html {
     line-height: 1.5;
@@ -444,24 +566,24 @@ body {
     background-color: #111827;
 }
 
-/* Colors - Blue */
-.text-blue-600 {
+/* Colors - gray */
+.text-gray-600 {
     color: #2563eb;
 }
 
-.text-blue-700 {
+.text-gray-700 {
     color: #1d4ed8;
 }
 
-.bg-blue-600 {
+.bg-gray-600 {
     background-color: #2563eb;
 }
 
-.bg-blue-700 {
+.bg-gray-700 {
     background-color: #1d4ed8;
 }
 
-.border-blue-500 {
+.border-gray-500 {
     border-color: #3b82f6;
 }
 
@@ -521,11 +643,11 @@ body {
 }
 
 /* Hover States */
-.hover\:text-blue-600:hover {
+.hover\:text-gray-600:hover {
     color: #2563eb;
 }
 
-.hover\:text-blue-700:hover {
+.hover\:text-gray-700:hover {
     color: #1d4ed8;
 }
 

@@ -1,59 +1,74 @@
 ---
 layout: default
 ---
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="min-h-screen bg-gray-50 py-12">
+  <div class="max-w-6xl mx-auto px-6">
+    <article class="bg-white rounded-lg shadow-sm p-8 mb-8" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.author -%}
-      • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card"
-          itemprop="name">{{ page.author }}</span></span>
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4" itemprop="name headline">{{ page.title | escape }}</h1>
+        <div class="text-gray-600 mb-4">
+          <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {{ page.date | date: "%B %-d, %Y" }}
+          </time>
+          {%- if page.author -%}
+          • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">{{ page.author }}</span>
+          </span>
+          {%- endif -%}
+          {%- if page.categories.size > 0 -%}
+          • <span class="post-categories">
+            {%- for category in page.categories -%}
+            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">{{ category }}</span>{% unless
+            forloop.last %} {% endunless %}
+            {%- endfor -%}
+          </span>
+          {%- endif -%}
+        </div>
+      </header>
+
+      <div class="prose prose-lg max-w-none leading-relaxed" itemprop="articleBody">
+        <div class="text-gray-900">
+          {{ content }}
+        </div>
+      </div>
+
+      {%- if page.tags.size > 0 -%}
+      <div class="mt-8 pt-6 border-t border-gray-200">
+        <strong class="text-gray-900">Tags:</strong>
+        <div class="mt-2">
+          {%- for tag in page.tags -%}
+          <span class="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm mr-2 mb-2">{{ tag }}</span>
+          {%- endfor -%}
+        </div>
+      </div>
       {%- endif -%}
-      {%- if page.categories.size > 0 -%}
-      • <span class="post-categories">
-        {%- for category in page.categories -%}
-        <span class="category">{{ category }}</span>{% unless forloop.last %}, {% endunless %}
-        {%- endfor -%}
-      </span>
+
+      <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+    </article>
+
+    <div class="flex justify-between items-center bg-white rounded-lg shadow-sm p-6">
+      {%- if page.previous.url -%}
+      <a class="flex-1 text-left group" href="{{ page.previous.url | relative_url }}">
+        <div class="text-sm text-gray-500 mb-1">Previous</div>
+        <div class="text-blue-600 group-hover:text-blue-800 font-medium">
+          ← {{ page.previous.title }}
+        </div>
+      </a>
+      {%- else -%}
+      <div class="flex-1"></div>
       {%- endif -%}
-    </p>
-  </header>
 
-  <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
+      {%- if page.next.url -%}
+      <a class="flex-1 text-right group" href="{{ page.next.url | relative_url }}">
+        <div class="text-sm text-gray-500 mb-1">Next</div>
+        <div class="text-blue-600 group-hover:text-blue-800 font-medium">
+          {{ page.next.title }} →
+        </div>
+      </a>
+      {%- else -%}
+      <div class="flex-1"></div>
+      {%- endif -%}
+    </div>
   </div>
-
-  {%- if page.tags.size > 0 -%}
-  <div class="post-tags">
-    <strong>Tags:</strong>
-    {%- for tag in page.tags -%}
-    <span class="tag">{{ tag }}</span>{% unless forloop.last %}, {% endunless %}
-    {%- endfor -%}
-  </div>
-  {%- endif -%}
-
-  {%- if site.disqus.shortname -%}
-  {%- include disqus_comments.html -%}
-  {%- endif -%}
-
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
-</article>
-
-<div class="post-navigation">
-  {%- if page.previous.url -%}
-  <a class="prev-post" href="{{ page.previous.url | relative_url }}">
-    ← {{ page.previous.title }}
-  </a>
-  {%- endif -%}
-
-  {%- if page.next.url -%}
-  <a class="next-post" href="{{ page.next.url | relative_url }}">
-    {{ page.next.title }} →
-  </a>
-  {%- endif -%}
 </div>
