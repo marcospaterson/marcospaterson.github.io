@@ -5,9 +5,9 @@ layout: default
 <div class="home">
   
   <section class="hero">
-    <h1 class="page-heading">Welcome to My Development Journey</h1>
+    <h1 class="page-heading">Turning Curiosity Into Code</h1>
     <p class="hero-description">
-      Hi! I'm Marcos Paterson, a passionate developer who loves building things with code. 
+      Hi! I'm Marcos Paterson, a passionate quant developer who loves building things with code. 
       This site serves as both my portfolio and a place where I share my learning experiences 
       through detailed blog posts and project documentation.
     </p>
