@@ -1,0 +1,33 @@
+# Site settings
+title: Marcos Paterson
+email: your-email@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Welcome to my personal portfolio and blog. Here you'll find projects 
+  showcasing my work with Python, C++, Bash, React, and more. I share 
+  insights, tutorials, and documentation about my development journey.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://marcospaterson.github.io" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
