@@ -59,4 +59,24 @@ layout: default
     {% endif %}
   </section>
 
+  <section class="featured-projects">
+    <h2>Featured Projects</h2>
+    <p>Check out some of my recent work and ongoing projects. From Python automation to React applications, I love building useful tools and sharing the process.</p>
+    <div class="project-highlights">
+      <div class="highlight-item">
+        <h3>🐍 Python Automation</h3>
+        <p>Scripts and tools for automating development workflows</p>
+      </div>
+      <div class="highlight-item">
+        <h3>⚛️ React Applications</h3>
+        <p>Interactive web applications with modern JavaScript</p>
+      </div>
+      <div class="highlight-item">
+        <h3>⚡ C++ Performance</h3>
+        <p>High-performance algorithms and data structures</p>
+      </div>
+    </div>
+    <p><a href="/projects/" class="cta-link">Explore All Projects →</a></p>
+  </section>
+
 </div>
