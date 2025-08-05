@@ -1,37 +1,48 @@
-<header class="site-header" role="banner">
+<header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-200" role="banner">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
 
-  <div class="wrapper">
-    {%- assign default_paths = site.pages | map: "path" -%}
-    {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        <a class="font-medium px-6 py-2 rounded-lg transition-colors {% if page.url == '/' or page.url == '/index.html' %}text-white bg-gray-900 {% else %} bg-transparent text-gray-900 hover:text-white border border-transparent hover:border-gray-400{% endif %}"
+          href="{{ '/' | relative_url }}">Home</a>
+        <a class="font-medium px-6 py-2 rounded-lg transition-colors {% if page.url == '/blog/' or page.url == '/blog/index.html' %}text-white bg-gray-900 {% else %} bg-transparent text-gray-900 hover:text-white border border-transparent hover:border-gray-400{% endif %}"
+          href="{{ '/blog/' | relative_url }}">Blog</a>
+        <a class="font-medium px-6 py-2 rounded-lg transition-colors {% if page.url == '/projects/' or page.url == '/projects/index.html' %}text-white bg-gray-900 {% else %} bg-transparent text-gray-900 hover:text-white border border-transparent hover:border-gray-400{% endif %}"
+          href="{{ '/projects/' | relative_url }}">Projects</a>
+        <a class="font-medium px-6 py-2 rounded-lg transition-colors {% if page.url == '/contact/' or page.url == '/contact/index.html' %}text-white bg-gray-900 {% else %} bg-transparent text-gray-900 hover:text-white border border-transparent hover:border-gray-400{% endif %}"
+          href="{{ '/contact/' | relative_url }}">Contact</a>
+      </nav>
 
-    {%- if page_paths -%}
-    <nav class="site-nav">
-      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-      <label for="nav-trigger">
-        <span class="menu-icon">
-          <svg viewBox="0 0 18 15" width="18px" height="15px">
-            <path
-              d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z" />
-          </svg>
-        </span>
-      </label>
+      <!-- Mobile Menu Button -->
+      <button
+        class="md:hidden flex items-center justify-center w-8 h-8 text-gray-700 hover:text-blue-600 focus:outline-none"
+        onclick="toggleMobileMenu()" aria-label="Toggle navigation">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
 
-      <div class="trigger">
-        <a class="page-link" href="{{ '/' | relative_url }}">Home</a>
-        <a class="page-link" href="{{ '/blog/' | relative_url }}">Blog</a>
-        <a class="page-link" href="{{ '/projects/' | relative_url }}">Projects</a>
-        <a class="page-link" href="{{ '/contact/' | relative_url }}">Contact</a>
-        {%- for path in page_paths -%}
-        {%- assign my_page = site.pages | where: "path", path | first -%}
-        {%- if my_page.title and my_page.title != "Blog" and my_page.title != "Contact" and my_page.title != "Projects"
-        -%}
-        <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
-        {%- endif -%}
-        {%- endfor -%}
+    <!-- Mobile Navigation (Hidden by default) -->
+    <nav id="mobile-menu" class="md:hidden hidden pb-4">
+      <div class="flex flex-col space-y-2">
+        <a class="font-medium px-6 py-2 rounded-lg transition-colors {% if page.url == '/' or page.url == '/index.html' %}text-gray-100 bg-blue-600 hover:bg-blue-700 border border-blue-600{% else %}bg-transparent text-gray-700 hover:text-gray-900 hover:border-gray-400 border border-transparent{% endif %}"
+          href="{{ '/' | relative_url }}">Home</a>
+        <a class="font-medium px-6 py-2 rounded-lg transition-colors {% if page.url == '/blog/' or page.url == '/blog/index.html' %}text-gray-100 bg-blue-600 hover:bg-blue-700 border border-blue-600{% else %}bg-transparent text-gray-700 hover:text-gray-900 hover:border-gray-400 border border-transparent{% endif %}"
+          href="{{ '/blog/' | relative_url }}">Blog</a>
+        <a class="font-medium px-6 py-2 rounded-lg transition-colors {% if page.url == '/projects/' or page.url == '/projects/index.html' %}text-gray-100 bg-blue-600 hover:bg-blue-700 border border-blue-600{% else %}bg-transparent text-gray-700 hover:text-gray-900 hover:border-gray-400 border border-transparent{% endif %}"
+          href="{{ '/projects/' | relative_url }}">Projects</a>
+        <a class="font-medium px-6 py-2 rounded-lg transition-colors {% if page.url == '/contact/' or page.url == '/contact/index.html' %}text-gray-100 bg-blue-600 hover:bg-blue-700 border border-blue-600{% else %}bg-transparent text-gray-700 hover:text-gray-900 hover:border-gray-400 border border-transparent{% endif %}"
+          href="{{ '/contact/' | relative_url }}">Contact</a>
       </div>
     </nav>
-    {%- endif -%}
   </div>
 
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
 </header>

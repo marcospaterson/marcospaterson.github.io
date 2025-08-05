@@ -36,19 +36,20 @@ Before we start, make sure you have:
 4. Initialize with a README if desired
 5. Clone the repository to your local machine:
 
-```bash
-git clone https://github.com/yourusername/yourusername.github.io.git
-cd yourusername.github.io
 ```
 
-## Step 2: Set Up Jekyll Structure
 
-Jekyll follows a specific directory structure. Here's what we need to create:
 
-### The `_config.yml` File
+```ruby
+source "https://rubygems.org"
 
 This is Jekyll's main configuration file:
 
+
+  gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-sitemap"
+end
+```
 ```yaml
 # Site settings
 title: Your Name

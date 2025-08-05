@@ -1,0 +1,26 @@
+{
+  "name": "marcospaterson.github.io",
+  "version": "1.0.0",
+  "description": "This is my personal portfolio and blog site built with Jekyll and hosted on GitHub Pages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcospaterson/marcospaterson.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/marcospaterson/marcospaterson.github.io/issues"
+  },
+  "homepage": "https://github.com/marcospaterson/marcospaterson.github.io#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11"
+  }
+}

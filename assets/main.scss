@@ -1,8 +1,6 @@
-@use "minima";
-
 // Custom styles for the site
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #161822 0%, #2a335f 100%);
     color: white;
     padding: 4rem 2rem;
     margin-bottom: 3rem;
@@ -44,7 +42,7 @@
     background: #f8f9fa;
     padding: 1.5rem;
     border-radius: 8px;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #ff0000;
 
     h3 {
         margin-bottom: 1rem;
@@ -61,7 +59,7 @@
     margin-top: 3rem;
 
     h2 {
-        border-bottom: 2px solid #667eea;
+        border-bottom: 2px solid #000000;
         padding-bottom: 0.5rem;
         margin-bottom: 2rem;
     }
@@ -97,7 +95,7 @@
         padding: 1.5rem;
         border-radius: 8px;
         text-align: center;
-        border-left: 4px solid #667eea;
+        border-left: 4px solid #ff0000;
 
         h3 {
             margin-bottom: 0.5rem;
@@ -112,7 +110,7 @@
 
     .cta-link {
         display: inline-block;
-        background: #667eea;
+        background: #161822;
         color: white;
         padding: 0.75rem 1.5rem;
         border-radius: 8px;
@@ -121,7 +119,7 @@
         transition: all 0.3s ease;
 
         &:hover {
-            background: #5a67d8;
+            background: #ffffff;
             transform: translateY(-2px);
         }
     }
@@ -156,7 +154,7 @@
     font-weight: 600;
 
     &:hover {
-        color: #667eea;
+        color: #ffffff;
         text-decoration: underline;
     }
 }
@@ -176,7 +174,7 @@
                 text-decoration: none;
 
                 &:hover {
-                    color: #667eea;
+                    color: #ffffff;
                 }
             }
         }
@@ -188,7 +186,7 @@
         }
 
         .read-more {
-            color: #667eea;
+            color: #161822;
             text-decoration: none;
             font-weight: 500;
 
@@ -206,7 +204,7 @@
         padding: 2rem;
         border-radius: 8px;
         margin-bottom: 3rem;
-        border-left: 4px solid #667eea;
+        border-left: 4px solid #2a335f;
     }
 
     .contact-grid {
@@ -229,7 +227,7 @@
         }
 
         a {
-            color: #667eea;
+            color: #2a335f;
             text-decoration: none;
             font-weight: 500;
 
@@ -278,7 +276,7 @@
     }
 
     .tech-tag {
-        background: #667eea;
+        background: #2a335f;
         color: white;
         padding: 0.25rem 0.75rem;
         border-radius: 15px;
@@ -294,7 +292,7 @@
         padding: 1.5rem;
         border-radius: 8px;
         margin-bottom: 3rem;
-        border-left: 4px solid #667eea;
+        border-left: 4px solid #2a335f;
     }
 
     .projects-filter {
@@ -323,12 +321,12 @@
 
                 &:hover {
                     background: #e9ecef;
-                    border-color: #667eea;
+                    border-color: #2a335f;
                 }
 
                 &.active {
-                    background: #667eea;
-                    border-color: #667eea;
+                    background: #2a335f;
+                    border-color: #2a335f;
                     color: white;
                 }
             }
@@ -352,11 +350,11 @@
         &:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-color: #667eea;
+            border-color: #2a335f;
         }
 
         .project-image {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2a335f 0%, #764ba2 100%);
             height: 120px;
             display: flex;
             align-items: center;
@@ -421,11 +419,11 @@
                     }
 
                     &.demo {
-                        background: #667eea;
+                        background: #2a335f;
                         color: white;
 
                         &:hover {
-                            background: #5a67d8;
+                            background: #2a335f;
                         }
                     }
                 }
@@ -453,7 +451,7 @@
         }
 
         a {
-            color: #667eea;
+            color: #2a335f;
             text-decoration: none;
             font-weight: 500;
 
@@ -482,7 +480,7 @@
 
             .post-categories {
                 .category {
-                    background: #667eea;
+                    background: #2a335f;
                     color: white;
                     padding: 0.2rem 0.5rem;
                     border-radius: 12px;
@@ -502,13 +500,13 @@
         h4,
         h5,
         h6 {
-            margin-top: 2rem;
+            margin-top: 1rem;
             margin-bottom: 1rem;
             color: #333;
         }
 
         h1 {
-            border-bottom: 2px solid #667eea;
+            border-bottom: 2px solid #2a335f;
             padding-bottom: 0.5rem;
         }
 
@@ -538,7 +536,7 @@
         }
 
         blockquote {
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #2a335f;
             margin: 1.5rem 0;
             padding-left: 1rem;
             color: #666;
@@ -580,7 +578,7 @@
         transition: all 0.3s ease;
 
         &:hover {
-            background: #667eea;
+            background: #2a335f;
             color: white;
             transform: translateY(-2px);
         }

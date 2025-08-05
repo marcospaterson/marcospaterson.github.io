@@ -1,6 +1,6 @@
 # Site settings
 title: Marcos Paterson
-email: your-email@example.com
+email: marcos.paterson@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Welcome to my personal portfolio and blog. Here you'll find projects 
   showcasing my work with Python, C++, Bash, React, and more. I share 
@@ -11,7 +11,8 @@ url: "https://marcospaterson.github.io" # the base hostname & protocol for your 
 # Build settings
 markdown: kramdown
 highlighter: rouge
-theme: minima
+sass:
+  style: compressed
 plugins:
   - jekyll-feed
   - jekyll-sitemap
