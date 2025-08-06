@@ -4,8 +4,13 @@ layout: default
 
 <div class="container mx-auto px-4 py-8">
   
+  <!-- Construction GIFs -->
+  <div class="flex justify-center items-center mb-8 flex-wrap">
+    <img src="/assets/ConstructionSite.gif" alt="Construction Site" class="rounded-lg">
+  </div>
+  
   <!-- Hero Section -->
-  <section class="bg-gray-800 text-white py-4 px-8 mb-10 rounded-xl text-center">
+  <section class="bg-gray-800 text-white py-4 px-8 mb-10 mt-2 rounded-xl text-center">
     <p class="text-xl leading-relaxed max-w-4xl mx-auto text-gray-100">
       “Around here, however, we don’t look backwards for very long. We keep moving forward, opening up new doors and doing new things, because we’re curious…and curiosity keeps leading us down new paths.”
 – Walt Disney
