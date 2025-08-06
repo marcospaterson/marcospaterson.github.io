@@ -1,6 +1,6 @@
 # GitHub Pages Deployment Guide
 
-This guide will help you deploy your Jekyll site to GitHub Pages step by step.
+This guide will help you deploy your Jekyll site to GitHub Pages using GitHub Actions for optimal build control.
 
 ## Prerequisites
 
@@ -8,15 +8,33 @@ This guide will help you deploy your Jekyll site to GitHub Pages step by step.
 - You have a GitHub account
 - Your repository is named `yourusername.github.io`
 
+## Deployment Options
+
+### Option 1: GitHub Actions (Recommended)
+
+We've set up a GitHub Actions workflow that builds and deploys your site automatically. This method provides:
+- Full control over the build environment
+- Support for external CSS imports (Tailwind CSS, Google Fonts)
+- Automatic deployments on every push to master/main
+
+The workflow file is located at `.github/workflows/deploy.yml` and will:
+1. Build your Jekyll site with all dependencies
+2. Generate the `main.css` file from your SCSS
+3. Deploy to GitHub Pages automatically
+
+### Option 2: Standard GitHub Pages Build
+
 ## Deployment Steps
 
-### Step 1: Push Your Code to GitHub
+### For GitHub Actions Deployment:
 
-Make sure all your changes are committed and pushed:
+1. **Enable GitHub Actions**: Go to your repository settings → Pages → Source and select "GitHub Actions"
+
+2. **Push Your Code**: Make sure all changes are committed and pushed:
 
 ```bash
 git add .
-git commit -m "Final site ready for deployment"
+git commit -m "Add GitHub Actions deployment"
 git push origin master
 ```
 
