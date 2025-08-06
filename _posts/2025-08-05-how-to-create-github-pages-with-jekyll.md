@@ -34,13 +34,10 @@ Before we start, make sure you have:
 4. Initialize with a README if desired
 5. Clone the repository to your local machine:
 
-<!-- ```bash -->
-````bash`
+```bash
 git clone https://github.com/yourusername/yourusername.github.io.git
 cd yourusername.github.io
 ```
-
-<!-- ``` -->
 
 ## Step 2: Set Up Your Jekyll Structure
 
@@ -50,7 +47,7 @@ Create the essential files for your Jekyll site.
 
 This is Jekyll's main configuration file:
 
-````yaml`
+```yaml
 # Site settings
 title: Your Name
 email: your-email@example.com
@@ -78,7 +75,7 @@ collections:
 
 This specifies the Ruby gems (packages) your site needs:
 
-````ruby`
+```ruby
 source "https://rubygems.org"
 
 gem "jekyll", "~> 4.3.0"
@@ -95,7 +92,7 @@ end
 
 Your homepage should welcome visitors and explain what they'll find. Here's how to create a modern landing page with Tailwind CSS:
 
-````html`
+```html
 ---
 layout: default
 ---
@@ -139,7 +136,7 @@ layout: default
 
 A dedicated page to list all your blog posts with modern styling:
 
-````html`
+```html
 ---
 layout: default
 title: Blog
@@ -175,7 +172,7 @@ permalink: /blog/
 
 Essential for networking and job opportunities:
 
-````html`
+```html
 ---
 layout: default
 title: Contact
@@ -218,7 +215,7 @@ Blog posts go in the `_posts` directory with a specific naming convention:
 
 Example: `2025-08-05-how-to-create-github-pages-with-jekyll.md`
 
-````markdown`
+```markdown
 ---
 layout: post
 title: "Your Post Title"
@@ -237,7 +234,7 @@ Your post content here using Markdown syntax.
 
 If you have Ruby installed, you can test your site locally:
 
-````bash`
+```bash
 # Install dependencies
 bundle install
 
@@ -250,7 +247,8 @@ bundle exec jekyll serve
 ## Step 6: Deploy to GitHub Pages
 
 1. Commit all your changes:
-````bash`
+
+```bash
 git add .
 git commit -m "Initial Jekyll site setup"
 git push origin main
@@ -269,7 +267,7 @@ git push origin main
 
 For a professional, modern look, you can use Tailwind CSS instead of the default Minima theme. Create an `assets/main.scss` file:
 
-````scss`
+```scss
 ---
 ---
 
@@ -316,7 +314,7 @@ For a professional, modern look, you can use Tailwind CSS instead of the default
 
 Update your `_config.yml` to remove the Minima theme:
 
-````yaml`
+```yaml
 # Remove this line:
 # theme: minima
 
@@ -330,7 +328,7 @@ plugins:
 
 Create a `_layouts/default.html` file for your base layout:
 
-````html`
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -366,7 +364,7 @@ Now that your basic site is working with modern styling, you can:
 
 Create `_includes/header.html` for a mobile-friendly navigation:
 
-````html`
+```html
 <header class="bg-white shadow-sm sticky top-0 z-50">
   <nav class="max-w-6xl mx-auto px-6 py-4">
     <div class="flex justify-between items-center">
@@ -402,7 +400,7 @@ Create `_includes/header.html` for a mobile-friendly navigation:
 
 Create layouts for different page types:
 
-````html`
+```html
 <!-- _layouts/default.html -->
 <!DOCTYPE html>
 <html lang="en">
@@ -488,7 +486,7 @@ All the code examples from this tutorial are available in the complete GitHub re
 
 Want to get started quickly? Fork the repository and customize it with your own content:
 
-````bash`
+```bash
 # Fork the repository on GitHub, then clone your fork
 git clone https://github.com/YOURUSERNAME/YOURUSERNAME.github.io.git
 cd YOURUSERNAME.github.io

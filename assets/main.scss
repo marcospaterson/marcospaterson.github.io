@@ -1,3 +1,14 @@
+---
+---
+// Import external stylesheets
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css");
+
+// Global font family
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 // Custom styles for the site
 .hero {
     background: linear-gradient(135deg, #161822 0%, #2a335f 100%);
@@ -516,7 +527,7 @@
         }
 
         code {
-            background: #f8f9fa;
+            background: #636567;
             padding: 0.2rem 0.4rem;
             border-radius: 4px;
             font-size: 0.9em;
@@ -744,410 +755,474 @@ pre.highlight,
 .language-css.highlighter-rouge,
 .language-scss.highlighter-rouge,
 .language-markdown.highlighter-rouge {
-    background-color: #e5e7eb !important;
-    /* gray-200 */
+    background-color: #1e1e1e !important;
+    /* Dark background for better contrast */
     border-radius: 0.5rem;
-    padding: 1rem;
-    overflow-x: auto;
+    padding: 0;
+    overflow: hidden;
     margin: 1rem 0;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    border: 1px solid #d1d5db;
-    /* gray-300 border for definition */
+    border: 1px solid #374151;
+    font-family: 'Courier New', Monaco, 'Menlo', monospace;
+}
+
+/* Handle Rouge's line number table structure */
+.highlight table,
+.highlight .rouge-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.highlight td,
+.highlight .rouge-gutter,
+.highlight .rouge-code {
+    padding: 0;
+    border: none;
+    vertical-align: top;
+}
+
+/* Line numbers column */
+.highlight .rouge-gutter,
+.highlight .lineno {
+    background-color: #2d2d2d !important;
+    color: #6b7280 !important;
+    text-align: right;
+    padding: 0.5rem !important;
+    border-right: 1px solid #374151 !important;
+    user-select: none;
+    min-width: 3rem;
+    width: 3rem;
+}
+
+/* Code content column */
+.highlight .rouge-code {
+    width: 100%;
+    overflow-x: auto;
+    padding: 0 !important;
+}
+
+/* Code content styling */
+.highlight .rouge-code pre,
+.highlight pre {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0.5rem 1rem !important;
+    color: #d4d4d4 !important;
+    white-space: pre !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    font-family: 'Courier New', Monaco, 'Menlo', monospace;
+    word-break: normal;
+    word-wrap: normal;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Inline code styles */
 code.highlighter-rouge {
-    background-color: #e5e7eb !important;
-    /* gray-200 */
-    color: #374151 !important;
-    /* gray-700 */
+    background-color: #374151 !important;
+    color: #d4d4d4 !important;
     padding: 0.125rem 0.25rem !important;
     border-radius: 0.25rem;
     font-size: 0.875rem;
-    border: 1px solid #d1d5db;
+    border: 1px solid #6b7280;
     margin: 0;
+    font-family: 'Courier New', Monaco, 'Menlo', monospace;
 }
 
-.highlight pre,
-.highlighter-rouge pre,
-div.highlight pre,
-figure.highlight pre,
-pre.highlight pre,
-.post-content .highlight pre,
-.prose .highlight pre {
-    background: transparent !important;
-    padding: 0;
-    margin: 0;
-    color: #374151 !important;
-    /* gray-700 for better contrast on light background */
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
+/* Code within highlight blocks */
 .highlight code,
-.highlighter-rouge code,
-div.highlight code,
-figure.highlight code,
-pre.highlight code,
-.post-content .highlight code,
-.prose .highlight code {
+.highlight .rouge-code code {
+    background: transparent !important;
+    color: #d4d4d4 !important;
+    padding: 0 !important;
+    border: none !important;
     font-size: 0.875rem;
-    font-family: 'Courier New', monospace;
-    line-height: 1.625;
+    line-height: 1.5;
+    font-family: 'Courier New', Monaco, 'Menlo', monospace;
+    white-space: pre;
+    word-wrap: normal;
+    overflow-wrap: normal;
 }
 
-/* Syntax highlighting colors - Light theme for gray-200 background */
+/* Responsive code blocks for mobile */
+@media (max-width: 768px) {
+    .highlight {
+        margin: 1rem -1rem;
+        border-radius: 0;
+    }
+
+    .highlight .rouge-gutter,
+    .highlight .lineno {
+        min-width: 2.5rem;
+        width: 2.5rem;
+        padding: 0.5rem 0.25rem !important;
+        font-size: 0.75rem;
+    }
+
+    .highlight .rouge-code pre,
+    .highlight pre {
+        padding: 0.5rem !important;
+        font-size: 0.75rem;
+        overflow-x: auto;
+    }
+}
+
+/* Syntax highlighting colors - Dark theme */
 .highlight .c {
-    color: #6b7280;
+    color: #6a9955;
 }
 
-/* Comment - gray-500 */
+/* Comment - green */
 .highlight .err {
-    color: #dc2626;
+    color: #f44747;
 }
 
-/* Error - red-600 */
+/* Error - red */
 .highlight .k {
-    color: #3730a3;
+    color: #569cd6;
 }
 
-/* Keyword - indigo-800 */
+/* Keyword - blue */
 .highlight .l {
-    color: #b45309;
+    color: #ce9178;
 }
 
-/* Literal - amber-700 */
+/* Literal - orange */
 .highlight .n {
-    color: #374151;
+    color: #d4d4d4;
 }
 
-/* Name - gray-700 */
+/* Name - light gray */
 .highlight .o {
-    color: #374151;
+    color: #d4d4d4;
 }
 
-/* Operator - gray-700 */
+/* Operator - light gray */
 .highlight .p {
-    color: #374151;
+    color: #d4d4d4;
 }
 
-/* Punctuation - gray-700 */
+/* Punctuation - light gray */
 .highlight .cm {
-    color: #6b7280;
+    color: #6a9955;
 }
 
-/* Comment.Multiline - gray-500 */
+/* Comment.Multiline - green */
 .highlight .cp {
-    color: #374151;
+    color: #9cdcfe;
 }
 
-/* Comment.Preproc - gray-700 */
+/* Comment.Preproc - light blue */
 .highlight .c1 {
-    color: #6b7280;
+    color: #6a9955;
 }
 
-/* Comment.Single - gray-500 */
+/* Comment.Single - green */
 .highlight .cs {
-    color: #6b7280;
+    color: #6a9955;
 }
 
-/* Comment.Special - gray-500 */
+/* Comment.Special - green */
 .highlight .gd {
-    color: #dc2626;
+    color: #f44747;
 }
 
-/* Generic.Deleted - red-600 */
+/* Generic.Deleted - red */
 .highlight .ge {
     font-style: italic;
 }
 
 /* Generic.Emph */
 .highlight .gh {
-    color: #3730a3;
+    color: #569cd6;
     font-weight: bold;
 }
 
-/* Generic.Heading - indigo-800 */
+/* Generic.Heading - blue */
 .highlight .gi {
-    color: #059669;
+    color: #4ec9b0;
 }
 
-/* Generic.Inserted - emerald-600 */
+/* Generic.Inserted - teal */
 .highlight .gp {
-    color: #6b7280;
+    color: #6a9955;
 }
 
-/* Generic.Prompt - gray-500 */
+/* Generic.Prompt - green */
 .highlight .gs {
     font-weight: bold;
 }
 
 /* Generic.Strong */
 .highlight .gu {
-    color: #374151;
+    color: #d4d4d4;
 }
 
-/* Generic.Subheading - gray-700 */
+/* Generic.Subheading - light gray */
 .highlight .kc {
-    color: #3730a3;
+    color: #569cd6;
 }
 
-/* Keyword.Constant - indigo-800 */
+/* Keyword.Constant - blue */
 .highlight .kd {
-    color: #3730a3;
+    color: #569cd6;
 }
 
-/* Keyword.Declaration - indigo-800 */
+/* Keyword.Declaration - blue */
 .highlight .kn {
-    color: #7c3aed;
+    color: #c586c0;
 }
 
-/* Keyword.Namespace - violet-600 */
+/* Keyword.Namespace - purple */
 .highlight .kp {
-    color: #3730a3;
+    color: #569cd6;
 }
 
-/* Keyword.Pseudo - indigo-800 */
+/* Keyword.Pseudo - blue */
 .highlight .kr {
-    color: #3730a3;
+    color: #569cd6;
 }
 
-/* Keyword.Reserved - indigo-800 */
+/* Keyword.Reserved - blue */
 .highlight .kt {
-    color: #0891b2;
+    color: #4ec9b0;
 }
 
-/* Keyword.Type - cyan-600 */
+/* Keyword.Type - teal */
 .highlight .ld {
-    color: #b45309;
+    color: #ce9178;
 }
 
-/* Literal.Date - amber-700 */
+/* Literal.Date - orange */
 .highlight .m {
-    color: #059669;
+    color: #b5cea8;
 }
 
-/* Literal.Number - emerald-600 */
+/* Literal.Number - light green */
 .highlight .s {
-    color: #b45309;
+    color: #ce9178;
 }
 
-/* Literal.String - amber-700 */
+/* Literal.String - orange */
 .highlight .na {
-    color: #374151;
+    color: #92c5f8;
 }
 
-/* Name.Attribute - gray-700 */
+/* Name.Attribute - light blue */
 .highlight .nb {
-    color: #7c2d12;
+    color: #dcdcaa;
 }
 
-/* Name.Builtin - orange-800 */
+/* Name.Builtin - yellow */
 .highlight .nc {
-    color: #0891b2;
+    color: #4ec9b0;
 }
 
-/* Name.Class - cyan-600 */
+/* Name.Class - teal */
 .highlight .no {
-    color: #0891b2;
+    color: #4ec9b0;
 }
 
-/* Name.Constant - cyan-600 */
+/* Name.Constant - teal */
 .highlight .nd {
-    color: #7c2d12;
+    color: #dcdcaa;
 }
 
-/* Name.Decorator - orange-800 */
+/* Name.Decorator - yellow */
 .highlight .ni {
-    color: #374151;
+    color: #d4d4d4;
 }
 
-/* Name.Entity - gray-700 */
+/* Name.Entity - light gray */
 .highlight .ne {
-    color: #dc2626;
+    color: #f44747;
 }
 
-/* Name.Exception - red-600 */
+/* Name.Exception - red */
 .highlight .nf {
-    color: #7c2d12;
+    color: #dcdcaa;
 }
 
-/* Name.Function - orange-800 */
+/* Name.Function - yellow */
 .highlight .nl {
-    color: #374151;
+    color: #d4d4d4;
 }
 
-/* Name.Label - gray-700 */
+/* Name.Label - light gray */
 .highlight .nn {
-    color: #0891b2;
+    color: #4ec9b0;
 }
 
-/* Name.Namespace - cyan-600 */
+/* Name.Namespace - teal */
 .highlight .nx {
-    color: #374151;
+    color: #9cdcfe;
 }
 
-/* Name.Other - gray-700 */
+/* Name.Other - light blue */
 .highlight .py {
-    color: #374151;
+    color: #d4d4d4;
 }
 
-/* Name.Property - gray-700 */
+/* Name.Property - light gray */
 .highlight .nt {
-    color: #3730a3;
+    color: #569cd6;
 }
 
-/* Name.Tag - indigo-800 */
+/* Name.Tag - blue */
 .highlight .nv {
-    color: #374151;
+    color: #9cdcfe;
 }
 
-/* Name.Variable - gray-700 */
+/* Name.Variable - light blue */
 .highlight .ow {
-    color: #3730a3;
+    color: #569cd6;
 }
 
-/* Operator.Word - indigo-800 */
+/* Operator.Word - blue */
 .highlight .w {
-    color: #374151;
+    color: #d4d4d4;
 }
 
-/* Text.Whitespace - gray-700 */
+/* Text.Whitespace - light gray */
 .highlight .mf {
-    color: #059669;
+    color: #b5cea8;
 }
 
-/* Literal.Number.Float - emerald-600 */
+/* Literal.Number.Float - light green */
 .highlight .mh {
-    color: #059669;
+    color: #b5cea8;
 }
 
-/* Literal.Number.Hex - emerald-600 */
+/* Literal.Number.Hex - light green */
 .highlight .mi {
-    color: #059669;
+    color: #b5cea8;
 }
 
-/* Literal.Number.Integer - emerald-600 */
+/* Literal.Number.Integer - light green */
 .highlight .mo {
-    color: #059669;
+    color: #b5cea8;
 }
 
-/* Literal.Number.Oct - emerald-600 */
+/* Literal.Number.Oct - light green */
 .highlight .sb {
-    color: #b45309;
+    color: #ce9178;
 }
 
-/* Literal.String.Backtick - amber-700 */
+/* Literal.String.Backtick - orange */
 .highlight .sc {
-    color: #b45309;
+    color: #ce9178;
 }
 
-/* Literal.String.Char - amber-700 */
+/* Literal.String.Char - orange */
 .highlight .sd {
-    color: #6b7280;
+    color: #6a9955;
 }
 
-/* Literal.String.Doc - gray-500 */
+/* Literal.String.Doc - green */
 .highlight .s2 {
-    color: #b45309;
+    color: #ce9178;
 }
 
-/* Literal.String.Double - amber-700 */
+/* Literal.String.Double - orange */
 .highlight .se {
-    color: #d97706;
+    color: #d7ba7d;
 }
 
-/* Literal.String.Escape - amber-600 */
+/* Literal.String.Escape - light orange */
 .highlight .sh {
-    color: #b45309;
+    color: #ce9178;
 }
 
-/* Literal.String.Heredoc - amber-700 */
+/* Literal.String.Heredoc - orange */
 .highlight .si {
-    color: #d97706;
+    color: #d7ba7d;
 }
 
-/* Literal.String.Interpol - amber-600 */
+/* Literal.String.Interpol - light orange */
 .highlight .sx {
-    color: #b45309;
+    color: #ce9178;
 }
 
-/* Literal.String.Other - amber-700 */
+/* Literal.String.Other - orange */
 .highlight .sr {
-    color: #dc2626;
+    color: #d16969;
 }
 
-/* Literal.String.Regex - red-600 */
+/* Literal.String.Regex - light red */
 .highlight .s1 {
-    color: #b45309;
+    color: #ce9178;
 }
 
-/* Literal.String.Single - amber-700 */
+/* Literal.String.Single - orange */
 .highlight .ss {
-    color: #b45309;
+    color: #ce9178;
 }
 
-/* Literal.String.Symbol - amber-700 */
+/* Literal.String.Symbol - orange */
 .highlight .bp {
-    color: #3730a3;
+    color: #569cd6;
 }
 
-/* Name.Builtin.Pseudo - indigo-800 */
+/* Name.Builtin.Pseudo - blue */
 .highlight .vc {
-    color: #0891b2;
+    color: #4ec9b0;
 }
 
-/* Name.Variable.Class - cyan-600 */
+/* Name.Variable.Class - teal */
 .highlight .vg {
-    color: #0891b2;
+    color: #4ec9b0;
 }
 
-/* Name.Variable.Global - cyan-600 */
+/* Name.Variable.Global - teal */
 .highlight .vi {
-    color: #0891b2;
+    color: #4ec9b0;
 }
 
-/* Name.Variable.Instance - cyan-600 */
+/* Name.Variable.Instance - teal */
 
-/* Language-specific enhancements for light theme */
+/* Language-specific enhancements for dark theme */
 .highlight .language-yaml .na {
-    color: #374151;
+    color: #92c5f8;
 }
 
-/* YAML keys - gray-700 */
+/* YAML keys - light blue */
 .highlight .language-yaml .s {
-    color: #b45309;
+    color: #ce9178;
 }
 
-/* YAML values - amber-700 */
+/* YAML values - orange */
 .highlight .language-ruby .k {
-    color: #dc2626;
+    color: #c586c0;
 }
 
-/* Ruby keywords - red-600 */
+/* Ruby keywords - purple */
 .highlight .language-ruby .nb {
-    color: #0891b2;
+    color: #dcdcaa;
 }
 
-/* Ruby builtins - cyan-600 */
+/* Ruby builtins - yellow */
 .highlight .language-html .nt {
-    color: #dc2626;
+    color: #569cd6;
 }
 
-/* HTML tags - red-600 */
+/* HTML tags - blue */
 .highlight .language-html .na {
-    color: #d97706;
+    color: #92c5f8;
 }
 
-/* HTML attributes - amber-600 */
+/* HTML attributes - light blue */
 .highlight .language-css .k {
-    color: #7c3aed;
+    color: #c586c0;
 }
 
-/* CSS properties - violet-600 */
+/* CSS properties - purple */
 .highlight .language-bash .nb {
-    color: #0891b2;
+    color: #dcdcaa;
 }
 
-/* Bash commands - cyan-600 */
+/* Bash commands - yellow */
