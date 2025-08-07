@@ -11,20 +11,20 @@ Welcome to my very first blog post! In this tutorial, I'll walk you through the 
 
 ## What You'll Learn
 
-By the end of this tutorial, you'll have:
-- A fully functional GitHub Pages site
-- A blog structure for writing posts
-- A professional landing page
-- A contact page for networking
-- The knowledge to customize and expand your site
+> By the end of this tutorial, you'll have:
+> - A fully functional GitHub Pages site
+> - A blog structure for writing posts
+> - A professional landing page
+> - A contact page for networking
+> - The knowledge to customize and expand your site
 
 ## Prerequisites
 
 Before we start, make sure you have:
-- A GitHub account
-- Git installed on your computer
-- Basic knowledge of Markdown
-- A text editor (VS Code recommended)
+> - A GitHub account
+> - Git installed on your computer
+> - Basic knowledge of Markdown
+> - A text editor (VS Code recommended)
 
 ## Step 1: Create Your GitHub Repository
 
@@ -79,11 +79,26 @@ This specifies the Ruby gems (packages) your site needs:
 source "https://rubygems.org"
 
 gem "jekyll", "~> 4.3.0"
+gem "rouge", "~> 4.0"
 
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
   gem "jekyll-sitemap"
 end
+
+# Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
+# and associated library.
+platforms :mingw, :x64_mingw, :mswin, :jruby do
+  gem "tzinfo", ">= 1", "< 3"
+  gem "tzinfo-data"
+end
+
+# Performance-booster for watching directories on Windows
+gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+
+# Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
+# do not have a Java counterpart.
+gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 ```
 
 ## Step 3: Create Your Pages
@@ -350,13 +365,13 @@ Create a `_layouts/default.html` file for your base layout:
 
 Now that your basic site is working with modern styling, you can:
 
-- Add more Tailwind utility classes for responsive design
-- Create additional page layouts in `_layouts`
-- Add custom includes for navigation, footer, etc.
-- Create a projects portfolio section
-- Integrate analytics with Google Analytics
-- Add a comment system like Disqus
-- Implement dark mode toggle
+> - Add more Tailwind utility classes for responsive design
+> - Create additional page layouts in `_layouts`
+> - Add custom includes for navigation, footer, etc.
+> - Create a projects portfolio section
+> - Integrate analytics with Google Analytics
+> - Add a comment system like Disqus
+> - Implement dark mode toggle
 
 ## Step 10: Advanced Features
 

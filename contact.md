@@ -5,62 +5,31 @@ permalink: /contact/
 ---
 
 <div class="contact-page">
-  <h1>Let's Connect</h1>
   
-  <section class="contact-intro">
-    <p>
-      I'm always interested in discussing new opportunities, collaborating on interesting projects, 
-      or simply connecting with fellow developers. Whether you're a recruiter, a potential collaborator, 
-      or someone who wants to chat about technology, I'd love to hear from you.
-    </p>
-  </section>
-
   <section class="contact-methods">
-    <h2>How to Reach Me</h2>
+    <h1 class="text-3xl my-2">Where to find me</h1>
     
     <div class="contact-grid">
-      <div class="contact-item">
-        <h3>📧 Email</h3>
-        <p>
-          <a href="mailto:your-email@example.com">your-email@example.com</a>
+      <div class="text-start contact-item">
+        
+        <p class="text-left">Email: 
+          <a href="mailto:marcos.paterson@gmail.com">marcos.paterson@gmail.com</a>
         </p>
-        <p>Best for: Job inquiries, collaboration proposals, detailed discussions</p>
-      </div>
 
-      <div class="contact-item">
-        <h3>💼 LinkedIn</h3>
-        <p>
-          <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
+        <p class="text-left mt-2">Linkedin: 
+          <a href="https://linkedin.com/in/marcospaterson" target="_blank">linkedin.com/in/marcospaterson</a>
         </p>
-        <p>Best for: Professional networking, career opportunities</p>
-      </div>
-
-      <div class="contact-item">
-        <h3>🐙 GitHub</h3>
-        <p>
+        
+        <p class="text-left mt-2">Github:
           <a href="https://github.com/marcospaterson" target="_blank">github.com/marcospaterson</a>
         </p>
-        <p>Best for: Checking out my code, contributing to projects</p>
-      </div>
-
-      <div class="contact-item">
-        <h3>🐦 Twitter</h3>
-        <p>
-          <a href="https://twitter.com/yourhandle" target="_blank">@yourhandle</a>
-        </p>
-        <p>Best for: Quick questions, tech discussions, following updates</p>
       </div>
     </div>
   </section>
 
   <section class="contact-form">
-    <h2>Quick Message</h2>
-    <p>
-      <em>Note: Replace this section with a contact form service like Formspree, Netlify Forms, or Google Forms when you're ready to receive messages directly through the site.</em>
-    </p>
-    
     <div class="form-placeholder">
-      <p>📝 Contact form coming soon! For now, please reach out via email or LinkedIn.</p>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfirW57JAybNLPleENO3May9Zp9eCIJ4YrbU-uIku46guNjfA/viewform?embedded=true" width="780" height="920" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
   </section>
 

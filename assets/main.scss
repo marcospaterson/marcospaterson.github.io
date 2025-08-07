@@ -8,6 +8,12 @@
     font-family: 'Roboto', sans-serif;
 }
 
+// List styling
+ul {
+    list-style: square;
+    padding-left: 1.5rem;
+}
+
 // Custom styles for the site
 .hero {
     background: linear-gradient(135deg, #161822 0%, #2a335f 100%);
@@ -178,8 +184,8 @@
 // Blog page styles
 .blog-page {
     .post-preview {
-        margin-bottom: 3rem;
-        padding-bottom: 2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0rem;
         border-bottom: 1px solid #eee;
 
         h2 {
@@ -190,7 +196,7 @@
                 text-decoration: none;
 
                 &:hover {
-                    color: #ffffff;
+                    color: #23232357;
                 }
             }
         }

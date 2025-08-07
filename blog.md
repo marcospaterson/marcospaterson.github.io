@@ -3,11 +3,11 @@ layout: page
 permalink: /blog/
 ---
 
-<div class="blog-page space-y-6 mb-6">
+<div class="blog-page space-y-6">
   <p>Here you'll find tutorials, project documentation, and insights from my development journey. I write about everything from Python automation to React applications, sharing both the successes and the lessons learned along the way.</p>
 
   {% if site.posts.size > 0 %}
-    <div class="post-list space-y-2">
+    <div class="post-list space-y- my-1">
       {% for post in site.posts %}
         <article class="post-preview bg-white px-4 rounded-lg shadow hover:shadow-lg transition border-l-4 border-gray-300">
           <h2 class="pt-2">

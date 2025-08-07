@@ -1,11 +1,9 @@
 ---
 layout: page
-title: Projects
 permalink: /projects/
 ---
 
 <div class="projects-page">
-  <h1>My Projects</h1>
   <p class="intro">
     Here's a collection of projects I've been working on, ranging from Python automation scripts 
     to full-stack web applications. Each project includes links to the source code and, 
