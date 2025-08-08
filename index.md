@@ -8,6 +8,10 @@ layout: default
   <div class="flex justify-center items-center mb-8 flex-wrap">
     <img src="/assets/ConstructionSite.gif" alt="Construction Site" class="rounded-lg">
   </div>
+
+  <p class="font-medium my-6">
+    This site is evolving alongside my projects. New sections, refinements, and updates will roll out as I build and experiment.
+  </p>
   
   <!-- Hero Section -->
   <section class="bg-gray-800 text-white py-4 px-8 mb-10 mt-2 rounded-xl text-center">

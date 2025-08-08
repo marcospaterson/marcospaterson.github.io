@@ -22,6 +22,14 @@ kramdown:
       line_numbers: true
 sass:
   style: compressed
+  sass_dir: _sass
+  sourcemap: never
+
+# Performance optimizations
+incremental: false
+profile: false
+
+# Plugin configuration
 plugins:
   - jekyll-feed
   - jekyll-sitemap
@@ -34,6 +42,8 @@ collections:
 
 # Exclude from processing
 exclude:
+  - README.md
+  - DEPLOYMENT.md
   - Gemfile
   - Gemfile.lock
   - node_modules
@@ -41,3 +51,11 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+  - .sass-cache
+  - .jekyll-cache
+  - .github/
+  - package.json
+  - package-lock.json
+  - postcss.config.js
+  - tailwind.config.js
+  - deploy.sh

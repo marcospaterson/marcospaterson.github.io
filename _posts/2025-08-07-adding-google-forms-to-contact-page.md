@@ -15,7 +15,7 @@ In this tutorial, I'll show you exactly how I added a fully functional contact f
 
 Before diving into implementation, let's understand why Google Forms is an excellent choice for Jekyll contact pages:
 
-### ✅ **Advantages:**
+### **Advantages:**
 - **Completely free** - No hosting costs or third-party fees
 - **No backend required** - Perfect for static sites
 - **Spam protection** - Built-in Google security
@@ -24,7 +24,7 @@ Before diving into implementation, let's understand why Google Forms is an excel
 - **Mobile responsive** - Works perfectly on all devices
 - **Easy customization** - Can be styled to match your site
 
-### ❌ **Limitations:**
+### **Limitations:**
 - Google branding (can be minimized with styling)
 - Limited design customization compared to custom forms
 - Requires Google account
@@ -40,14 +40,14 @@ Before diving into implementation, let's understand why Google Forms is an excel
 Here are the fields I recommend for a contact form:
 
 ```
-📝 Form Title: "Contact Me"
-📋 Description: "I'd love to hear from you! Whether you have a question, collaboration idea, or just want to say hello."
+Form Title: "Contact Me"
+Description: "I'd love to hear from you! Whether you have a question, collaboration idea, or just want to say hello."
 
-🔹 Name (Short answer, Required)
-🔹 Email (Short answer, Required, Email validation)
-🔹 Subject (Short answer, Required)  
-🔹 Message (Paragraph, Required)
-🔹 How did you find me? (Multiple choice, Optional)
+- Name (Short answer, Required)
+- Email (Short answer, Required, Email validation)
+- Subject (Short answer, Required)  
+- Message (Paragraph, Required)
+- How did you find me? (Multiple choice, Optional)
    - Google Search
    - LinkedIn  
    - GitHub
@@ -65,10 +65,10 @@ Here are the fields I recommend for a contact form:
    - **Message field**: Toggle "Required" on
 
 2. **Configure form settings**:
-   - Click the gear icon (⚙️) at the top
+   - Click the gear icon at the top
    - **General tab**:
-     - ✅ Collect email addresses
-     - ✅ Limit to 1 response (if desired)
+     - Collect email addresses
+     - Limit to 1 response (if desired)
    - **Presentation tab**:
      - Add a custom confirmation message
      - Show link to submit another response
@@ -270,7 +270,7 @@ To get notified when someone submits your form:
 
 1. **Open your Google Form**
 2. **Go to "Responses" tab**
-3. **Click the three dots menu** (⋮)
+3. **Click the three dots menu**
 4. **Select "Get email notifications for new responses"**
 5. **Enable notifications**
 
@@ -290,13 +290,13 @@ Google automatically creates a spreadsheet with all form responses:
 ### Pro Tips for Response Management:
 
 ```bash
-📊 **Google Sheets Integration**:
+**Google Sheets Integration:**
 - Automatic data collection
 - Export to CSV for analysis  
 - Create charts and analytics
 - Set up additional email triggers
 
-🔔 **Advanced Notifications**:
+**Advanced Notifications:**
 - Use Google Apps Script for custom notifications
 - Forward to specific team members
 - Integrate with Slack or Discord
@@ -309,12 +309,12 @@ Google automatically creates a spreadsheet with all form responses:
 
 After form submission, users see a default Google message. Customize it:
 
-1. **In form editor, click "Settings"** (⚙️)
+1. **In form editor, click "Settings"**
 2. **Go to "Presentation" tab**
 3. **Add custom confirmation message**:
 
 ```
-Thank you for reaching out! 🎉
+Thank you for reaching out!
 
 I've received your message and will get back to you within 24-48 hours. 
 
@@ -387,10 +387,10 @@ For better responsive behavior and styling:
 
 Before going live, test your contact form thoroughly:
 
-### ✅ **Testing Checklist:**
+### **Testing Checklist:**
 
 ```bash
-🔍 **Functionality Tests**:
+**Functionality Tests:**
 - [ ] Form loads properly on desktop
 - [ ] Form loads properly on mobile  
 - [ ] All required fields work
@@ -398,13 +398,13 @@ Before going live, test your contact form thoroughly:
 - [ ] Submission completes successfully
 - [ ] Thank you message displays
 
-📧 **Notification Tests**:
+**Notification Tests:**
 - [ ] Email notifications arrive
 - [ ] Responses appear in Google Sheets
 - [ ] Data is formatted correctly
 - [ ] Timestamps are accurate
 
-🎨 **Design Tests**:
+**Design Tests:**
 - [ ] Form matches site styling
 - [ ] Responsive design works
 - [ ] Loading message displays
@@ -437,7 +437,7 @@ Track your form performance:
 Based on usage data:
 
 ```markdown
-📈 **Optimization Strategies**:
+**Optimization Strategies:**
 
 **High Abandon Rate?**
 - Simplify form fields
@@ -462,14 +462,14 @@ Based on usage data:
 Integrating Google Forms into your Jekyll contact page provides a robust, free solution for user interaction without requiring backend development. The combination of Jekyll's speed and security with Google Forms' reliability creates an excellent user experience.
 
 ### Key Benefits Achieved:
-- ✅ **Free, reliable contact form** without backend complexity
-- ✅ **Professional presentation** that matches your site design
-- ✅ **Automatic data management** with Google Sheets integration
-- ✅ **Mobile-responsive design** that works on all devices
-- ✅ **Spam protection** and security through Google
-- ✅ **Instant notifications** to stay connected with your audience
+- **Free, reliable contact form** without backend complexity
+- **Professional presentation** that matches your site design
+- **Automatic data management** with Google Sheets integration
+- **Mobile-responsive design** that works on all devices
+- **Spam protection** and security through Google
+- **Instant notifications** to stay connected with your audience
 
-This solution is perfect for:
+### Perfect For:
 - **Portfolio sites** needing professional contact methods
 - **Blogs** wanting reader feedback and interaction
 - **Business websites** requiring lead generation
@@ -482,7 +482,7 @@ Have questions about implementing Google Forms on your Jekyll site? **Use the co
 
 ---
 
-## 📚 Complete Implementation Reference
+## Complete Implementation Reference
 
 All the code examples from this tutorial are implemented on this very site:
 
@@ -515,4 +515,3 @@ All the code examples from this tutorial are implemented on this very site:
 ✅ Deploy to production
 ```
 
-Ready to add a contact form to your Jekyll site? Follow this tutorial and you'll have a professional contact solution up and running in under 30 minutes! 🚀
