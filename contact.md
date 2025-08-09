@@ -6,30 +6,20 @@ permalink: /contact/
 
 <div class="contact-page">
   
-  <section class="contact-methods">
-    <h1 class="text-3xl my-2">Where to find me</h1>
-    
-    <div class="contact-grid">
-      <div class="text-start contact-item">
-        
-        <p class="text-left">Email: 
-          <a href="mailto:marcos.paterson@gmail.com">marcos.paterson@gmail.com</a>
-        </p>
-
-        <p class="text-left mt-2">Linkedin: 
-          <a href="https://linkedin.com/in/marcospaterson" target="_blank">linkedin.com/in/marcospaterson</a>
-        </p>
-        
-        <p class="text-left mt-2">Github:
-          <a href="https://github.com/marcospaterson" target="_blank">github.com/marcospaterson</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
   <section class="contact-form">
-    <div class="form-placeholder">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfirW57JAybNLPleENO3May9Zp9eCIJ4YrbU-uIku46guNjfA/viewform?embedded=true" width="780" height="920" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <h1 class="text-3xl text-center mb-6">Get In Touch</h1>
+    <p class="text-center text-gray-600 mb-8">Use the form below to send me a message. I'll respond as quickly as possible!</p>
+    
+    <div class="form-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfirW57JAybNLPleENO3May9Zp9eCIJ4YrbU-uIku46guNjfA/viewform?embedded=true" 
+              width="100%" 
+              height="920" 
+              frameborder="0" 
+              marginheight="0" 
+              marginwidth="0"
+              class="google-form">
+        Loading contact form...
+      </iframe>
     </div>
   </section>
 
