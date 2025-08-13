@@ -6,7 +6,6 @@ categories: [database, timescaledb, postgresql, debian, devops]
 tags: [timescaledb, postgresql, database, debian, docker, automation, production, tutorial]
 author: Marcos Paterson
 description: "Learn how to set up a production-ready PostgreSQL/TimescaleDB server on Debian VM from scratch. Complete with automation scripts, security hardening, backup strategies, and best practices for high-performance time-series database deployment."
-image: /assets/images/timescaledb-debian-setup.png
 ---
 
 Setting up a production-ready time-series database can be complex, involving multiple components from system configuration to security hardening. In this comprehensive guide, I'll walk you through creating a robust PostgreSQL/TimescaleDB deployment on a Debian VM from the ground up.
@@ -725,6 +724,7 @@ net.ipv4.tcp_wmem = 4096 65536 16777216
 
 The system includes automated health checks:
 
+{% raw %}
 ```bash
 #!/bin/bash
 # Health monitoring script runs every 2 minutes
@@ -746,6 +746,7 @@ if [ "$USAGE" -gt 85 ]; then
     # Send disk space warning
 fi
 ```
+{% endraw %}
 
 ### Log Management
 
