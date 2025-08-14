@@ -1,0 +1,38 @@
+<!-- Google tag (gtag.js) - Privacy First Implementation -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', '{{ site.google_analytics }}', {
+    // Privacy settings
+    anonymize_ip: true,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+
+    // Performance settings  
+    send_page_view: true,
+    cookie_expires: 63072000,  // 2 years in seconds
+
+    // Custom dimensions (optional)
+    custom_map: {
+      'dimension1': 'post_category',
+      'dimension2': 'author'
+    }
+  });
+
+  // Track blog post categories
+  {% if page.categories %}
+  gtag('event', 'page_view', {
+    'custom_map.dimension1': '{{ page.categories | first }}'
+  });
+  {% endif %}
+
+  // Track post authors
+  {% if page.author %}
+  gtag('event', 'page_view', {
+    'custom_map.dimension2': '{{ page.author }}'
+  });
+  {% endif %}
+</script>

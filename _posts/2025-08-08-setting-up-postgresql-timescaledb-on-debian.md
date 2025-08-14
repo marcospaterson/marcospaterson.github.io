@@ -736,7 +736,7 @@ The system includes automated health checks:
 # Health monitoring script runs every 2 minutes
 
 # Check container status
-if ! docker ps --format '{{.Names}}' | grep -q "timescaledb"; then
+if ! docker ps --format '{% raw %}{{.Names}}{% endraw %}' | grep -q "timescaledb"; then
     # Attempt restart
     docker start timescaledb
 fi
