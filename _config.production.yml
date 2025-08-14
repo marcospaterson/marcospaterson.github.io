@@ -15,7 +15,12 @@ profile: false
 strict_front_matter: true
 
 # Analytics and tracking (uncomment when ready)
-# google_analytics: YOUR_GA_ID
+google_analytics: G-TRZ85JG6LN
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-TRZ85JG6LN"  # Same as above
+    anonymize_ip: true
 
 # Production-specific plugins
 plugins:
@@ -23,11 +28,16 @@ plugins:
   - jekyll-sitemap
 
 # SEO and social sharing (optional future enhancements)
-# social:
-#   name: Marcos Paterson
-#   links:
-#     - https://github.com/marcospaterson
-#     - https://linkedin.com/in/marcospaterson
+author:
+  name: Marcos Paterson
+  bio: Quant Developer and Tech Enthusiast
+  email: marcos.paterson@gmail.com
+
+social:
+  name: Marcos Paterson
+  links:
+    - https://github.com/marcospaterson
+    - https://linkedin.com/in/marcospaterson
 
 # Additional exclusions for production
 exclude:
