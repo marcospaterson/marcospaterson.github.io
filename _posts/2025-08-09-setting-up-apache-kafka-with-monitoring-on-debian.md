@@ -4,9 +4,11 @@ title: "Complete Guide: Setting Up Apache Kafka with Monitoring on Debian from S
 date: 2025-08-09 09:00:00 +0000
 categories: [database, kafka, apache, debian, devops, monitoring]
 tags: [kafka, apache-kafka, debian, docker, prometheus, grafana, monitoring, devops, production]
-author: Marcos Paterson
+author: "Marcos Paterson"
 excerpt: "A comprehensive production deployment guide for Apache Kafka 3.7.0 with KRaft mode, complete monitoring stack, automation scripts, and security hardening on Debian from scratch."
 ---
+
+# Complete Guide: Setting Up Apache Kafka with Monitoring on Debian from Scratch
 
 Setting up a production-ready Apache Kafka cluster with comprehensive monitoring can be complex, involving multiple components from container orchestration to observability stacks. In this comprehensive guide, I'll walk you through creating a robust Apache Kafka deployment on Debian with full monitoring capabilities from the ground up.
 
@@ -16,12 +18,12 @@ This isn't just another "quick start" tutorial – it's a complete production de
 
 By the end of this guide, you'll have:
 
-- Production-ready Apache Kafka 3.7.0 cluster with KRaft mode  
-- Comprehensive monitoring with Prometheus, Grafana, and specialized exporters  
-- Automated deployment scripts for reproducible setups  
-- Security hardening with firewall and access controls  
-- Topic management automation for different use cases  
-- Performance testing and validation tools  
+- Production-ready Apache Kafka 3.7.0 cluster with KRaft mode
+- Comprehensive monitoring with Prometheus, Grafana, and specialized exporters
+- Automated deployment scripts for reproducible setups
+- Security hardening with firewall and access controls
+- Topic management automation for different use cases
+- Performance testing and validation tools
 - Complete observability stack with dashboards and alerting
 
 ## Architecture Overview
@@ -104,45 +106,68 @@ The foundation starts with a well-configured Docker environment. Our setup uses 
 
 ```yaml
 services:
-  kafka:
-    image: bitnami/kafka:3.7.0
-    container_name: kafka
-    restart: unless-stopped
+  zookeeper:
+    image: apache/kafka:3.7.0
+    hostname: zookeeper
+    container_name: zookeeper
     ports:
-      - "9092:9094"
-      - "9094:9094"
+      - "2181:2181"
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: controller
+      KAFKA_LISTENERS: CONTROLLER://0.0.0.0:9093
     networks:
       - kafka-network
+
+  kafka:
+    image: apache/kafka:3.7.0
+    hostname: kafka
+    container_name: kafka
+    ports:
+      - "9092:9092"
+      - "9101:9101"
+    environment:
+      KAFKA_NODE_ID: 2
+      KAFKA_PROCESS_ROLES: broker
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://YOUR_SERVER_IP:9092
 ```
 
 This isn't just basic containerization – it includes:
 
 - Health checks for automatic recovery
-- Network isolation with custom networks
+- Network isolation with custom networks  
 - Volume persistence for data durability
 - Resource limits for stable operation
 
 ### Apache Kafka in KRaft Mode
 
-One of the most significant architectural decisions is using KRaft mode instead of traditional Zookeeper. Here's the configuration that makes it work:
+One of the most significant architectural decisions is using KRaft mode with a separated controller and broker configuration. Here's the configuration that makes it work:
 
 ```yaml
-environment:
-  KAFKA_CFG_NODE_ID: 1
-  KAFKA_CFG_PROCESS_ROLES: controller,broker
-  KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
-  KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094
-  KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,EXTERNAL://YOUR_SERVER_IP:9094
-  KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
-  KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
+  zookeeper:
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: controller
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@zookeeper:9093
+      KAFKA_LOG_DIRS: /tmp/kraft-controller-logs
+
+  kafka:
+    environment:
+      KAFKA_NODE_ID: 2
+      KAFKA_PROCESS_ROLES: broker
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@zookeeper:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://YOUR_SERVER_IP:9092
+      KAFKA_LOG_DIRS: /tmp/kraft-combined-logs
 ```
 
-Why KRaft mode matters:
+Why this KRaft setup matters:
 
-- Eliminates Zookeeper dependency reducing complexity
+- Eliminates Zookeeper dependency while maintaining reliable coordination
 - Better metadata handling and faster recovery
 - Simplified security configuration
 - Improved partition scaling capabilities
+- Clear separation between controller and broker roles
 
 ### Network Configuration Strategy
 
@@ -248,7 +273,7 @@ grafana:
 The dashboard includes panels for:
 
 - Kafka broker health and status
-- Topic throughput and partition distribution
+- Topic throughput and partition distribution  
 - Consumer lag trending and alerting
 - System resource utilization
 
@@ -268,8 +293,8 @@ create_topic() {
     local replication_factor="$3"
     shift 3
     local configs="$@"
-
-    docker exec kafka /opt/bitnami/kafka/bin/kafka-topics.sh \
+    
+    docker exec kafka /opt/kafka/bin/kafka-topics.sh \
         --create \
         --bootstrap-server localhost:9092 \
         --topic "$topic_name" \
@@ -344,7 +369,7 @@ The smoke test script validates all system components:
 
 test_kafka_connectivity() {
     echo "Testing Kafka connectivity..."
-
+    
     # Test metadata retrieval
     if kcat -b YOUR_SERVER_IP:9092 -L > /dev/null 2>&1; then
         echo "✓ Kafka metadata accessible"
@@ -369,13 +394,13 @@ The testing framework includes:
 test_producer_consumer() {
     local test_topic="test-topic"
     local test_message="Test message from Apache Kafka"
-
+    
     # Send test message
     echo "$test_message" | kcat -P -b YOUR_SERVER_IP:9092 -t "$test_topic"
-
+    
     # Verify message receipt
     received=$(kcat -C -b YOUR_SERVER_IP:9092 -t "$test_topic" -o beginning -e | tail -1)
-
+    
     if [ "$received" = "$test_message" ]; then
         echo "✓ Producer/Consumer test passed"
     else
@@ -399,13 +424,13 @@ test_monitoring_endpoints() {
     if curl -s http://YOUR_SERVER_IP:9090/metrics | grep -q "prometheus_"; then
         echo "✓ Prometheus metrics available"
     fi
-
+    
     # Test Kafka exporter
     if curl -s http://YOUR_SERVER_IP:9308/metrics | grep -q "kafka_brokers"; then
         echo "✓ Kafka exporter functional"
     fi
-
-    # Test Grafana accessibility
+    
+    # Test Grafana accessibility  
     if curl -s http://YOUR_SERVER_IP:3000/api/health | grep -q "ok"; then
         echo "✓ Grafana dashboard accessible"
     fi
@@ -424,8 +449,8 @@ The lag checking script provides operational visibility:
 
 check_consumer_lag() {
     echo "Checking consumer group lag..."
-
-    docker exec kafka /opt/bitnami/kafka/bin/kafka-consumer-groups.sh \
+    
+    docker exec kafka /opt/kafka/bin/kafka-consumer-groups.sh \
         --bootstrap-server localhost:9092 \
         --describe --all-groups
 }
@@ -447,9 +472,9 @@ This provides:
 setup_user_acls() {
     local username="$1"
     local topic_pattern="$2"
-
+    
     # Create user with specific topic access
-    docker exec kafka /opt/bitnami/kafka/bin/kafka-acls.sh \
+    docker exec kafka /opt/kafka/bin/kafka-acls.sh \
         --bootstrap-server localhost:9092 \
         --add \
         --allow-principal User:$username \
@@ -470,21 +495,21 @@ Security features include:
 
 ### Apache Kafka Tuning
 
-The Bitnami Kafka image allows extensive configuration through environment variables:
+The Apache Kafka official image allows extensive configuration through environment variables:
 
 ```yaml
 environment:
   # Performance tuning
-  KAFKA_CFG_NUM_NETWORK_THREADS: 8
-  KAFKA_CFG_NUM_IO_THREADS: 16
-  KAFKA_CFG_SOCKET_SEND_BUFFER_BYTES: 102400
-  KAFKA_CFG_SOCKET_RECEIVE_BUFFER_BYTES: 102400
-  KAFKA_CFG_SOCKET_REQUEST_MAX_BYTES: 104857600
-
+  KAFKA_NUM_NETWORK_THREADS: 8
+  KAFKA_NUM_IO_THREADS: 16
+  KAFKA_SOCKET_SEND_BUFFER_BYTES: 102400
+  KAFKA_SOCKET_RECEIVE_BUFFER_BYTES: 102400
+  KAFKA_SOCKET_REQUEST_MAX_BYTES: 104857600
+  
   # Log configuration
-  KAFKA_CFG_LOG_RETENTION_HOURS: 168
-  KAFKA_CFG_LOG_SEGMENT_BYTES: 1073741824
-  KAFKA_CFG_LOG_CLEANUP_INTERVAL_MS: 300000
+  KAFKA_LOG_RETENTION_HOURS: 168
+  KAFKA_LOG_SEGMENT_BYTES: 1073741824
+  KAFKA_LOG_CLEANUP_INTERVAL_MS: 300000
 ```
 
 These optimizations provide:
@@ -530,24 +555,24 @@ For different system configurations:
 ```yaml
 environment:
   KAFKA_HEAP_OPTS: "-Xmx1G -Xms1G"
-  KAFKA_CFG_NUM_IO_THREADS: 4
-  KAFKA_CFG_NUM_NETWORK_THREADS: 4
+  KAFKA_NUM_IO_THREADS: 4
+  KAFKA_NUM_NETWORK_THREADS: 4
 ```
 
 **8GB RAM System:**
-```yaml
+```yaml  
 environment:
   KAFKA_HEAP_OPTS: "-Xmx2G -Xms2G"
-  KAFKA_CFG_NUM_IO_THREADS: 8
-  KAFKA_CFG_NUM_NETWORK_THREADS: 8
+  KAFKA_NUM_IO_THREADS: 8
+  KAFKA_NUM_NETWORK_THREADS: 8
 ```
 
 **16GB+ RAM System:**
 ```yaml
 environment:
   KAFKA_HEAP_OPTS: "-Xmx4G -Xms4G"
-  KAFKA_CFG_NUM_IO_THREADS: 16
-  KAFKA_CFG_NUM_NETWORK_THREADS: 16
+  KAFKA_NUM_IO_THREADS: 16
+  KAFKA_NUM_NETWORK_THREADS: 16
 ```
 
 ### Storage Optimization
@@ -557,9 +582,9 @@ For SSD storage configurations:
 ```yaml
 environment:
   # Optimize for SSD performance
-  KAFKA_CFG_LOG_FLUSH_INTERVAL_MESSAGES: 10000
-  KAFKA_CFG_LOG_FLUSH_INTERVAL_MS: 1000
-  KAFKA_CFG_LOG_SEGMENT_BYTES: 536870912
+  KAFKA_LOG_FLUSH_INTERVAL_MESSAGES: 10000
+  KAFKA_LOG_FLUSH_INTERVAL_MS: 1000
+  KAFKA_LOG_SEGMENT_BYTES: 536870912
 ```
 
 ## Troubleshooting Guide
@@ -583,7 +608,7 @@ netstat -tlnp | grep 9092
 
 ```bash
 # Verify broker availability
-docker exec kafka /opt/bitnami/kafka/bin/kafka-topics.sh \
+docker exec kafka /opt/kafka/bin/kafka-topics.sh \
     --bootstrap-server localhost:9092 --list
 
 # Check cluster metadata
@@ -596,7 +621,7 @@ kcat -b YOUR_SERVER_IP:9092 -L
 # Test Prometheus scraping
 curl -s http://YOUR_SERVER_IP:9090/targets
 
-# Verify exporter functionality
+# Verify exporter functionality  
 curl -s http://YOUR_SERVER_IP:9308/metrics | grep kafka_brokers
 
 # Check Grafana data sources
@@ -610,7 +635,7 @@ curl -s http://admin:admin123@YOUR_SERVER_IP:3000/api/datasources
 docker stats kafka
 
 # Check topic throughput
-docker exec kafka /opt/bitnami/kafka/bin/kafka-log-dirs.sh \
+docker exec kafka /opt/kafka/bin/kafka-log-dirs.sh \
     --bootstrap-server localhost:9092 --describe
 
 # Analyze consumer lag
@@ -644,23 +669,29 @@ For production deployments, consider multi-broker configurations:
 
 ```yaml
 services:
+  zookeeper:
+    image: apache/kafka:3.7.0
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: controller
+      
   kafka-1:
-    image: bitnami/kafka:3.7.0
+    image: apache/kafka:3.7.0
     environment:
-      KAFKA_CFG_NODE_ID: 1
-      KAFKA_CFG_PROCESS_ROLES: controller,broker
-
+      KAFKA_NODE_ID: 2
+      KAFKA_PROCESS_ROLES: broker
+      
   kafka-2:
-    image: bitnami/kafka:3.7.0
+    image: apache/kafka:3.7.0
     environment:
-      KAFKA_CFG_NODE_ID: 2
-      KAFKA_CFG_PROCESS_ROLES: controller,broker
-
+      KAFKA_NODE_ID: 3
+      KAFKA_PROCESS_ROLES: broker
+      
   kafka-3:
-    image: bitnami/kafka:3.7.0
+    image: apache/kafka:3.7.0
     environment:
-      KAFKA_CFG_NODE_ID: 3
-      KAFKA_CFG_PROCESS_ROLES: controller,broker
+      KAFKA_NODE_ID: 4
+      KAFKA_PROCESS_ROLES: broker
 ```
 
 ### Backup and Recovery
@@ -734,24 +765,35 @@ During the development and deployment of this Kafka setup, several important dis
 
 ### Image Selection Matters
 
-**Issue:** The official Apache Kafka Docker image required complex configuration and often failed to start properly in KRaft mode.
+**Issue:** Choosing between different Docker images for Apache Kafka can significantly impact ease of configuration and reliability.
 
-**Solution:** Switching to the Bitnami Kafka image provided:
-- More reliable KRaft mode configuration
-- Better environment variable support
-- Comprehensive documentation
-- Production-ready defaults
+**Solution:** Using the official Apache Kafka image provided:
+- Direct Apache Kafka experience without distribution-specific modifications
+- Standard configuration patterns that match official documentation
+- Simplified path structure using `/opt/kafka/bin/` consistently
+- Better compatibility with Kafka tooling and monitoring
 
-### Path Configuration Challenges
+### KRaft Mode Architecture
 
-**Issue:** Different Kafka distributions place binaries in different locations, causing script failures.
+**Issue:** Traditional single-node KRaft setups combine controller and broker roles, which can limit scalability.
 
-**Solution:** All scripts were updated to use Bitnami-specific paths:
+**Solution:** Separating controller and broker roles provides:
+- Clear separation of concerns between metadata management and data serving
+- Better scalability for production deployments
+- Easier troubleshooting with dedicated controller logs
+- More realistic testing environment for production scenarios
+
+### Path Configuration Consistency
+
+**Issue:** Different Kafka distributions place binaries in different locations, causing script portability issues.
+
+**Solution:** All scripts were standardized to use official Apache Kafka paths:
 
 ```bash
-# Bitnami path structure
-/opt/bitnami/kafka/bin/kafka-topics.sh
-/opt/bitnami/kafka/bin/kafka-consumer-groups.sh
+# Official Apache Kafka path structure
+/opt/kafka/bin/kafka-topics.sh
+/opt/kafka/bin/kafka-consumer-groups.sh
+/opt/kafka/bin/kafka-console-producer.sh
 ```
 
 ### Monitoring Integration Complexity
@@ -769,32 +811,32 @@ During the development and deployment of this Kafka setup, several important dis
 
 Setting up a production-ready Apache Kafka cluster with comprehensive monitoring involves many moving pieces, but with the right approach and tools, it becomes manageable and reliable. This guide provides you with:
 
-✅ Complete containerized deployment with Docker Compose
-✅ Production-hardened Kafka configuration with KRaft mode
-✅ Comprehensive monitoring with Prometheus and Grafana
-✅ Automated topic management and testing scripts
-✅ Security considerations and best practices
-✅ Troubleshooting guides for common issues
-✅ Performance tuning for different workloads
+✅ Complete containerized deployment with Docker Compose  
+✅ Production-hardened Kafka configuration with KRaft mode  
+✅ Comprehensive monitoring with Prometheus and Grafana  
+✅ Automated topic management and testing scripts  
+✅ Security considerations and best practices  
+✅ Troubleshooting guides for common issues  
+✅ Performance tuning for different workloads  
 
 ### Key Takeaways
 
-**Simplicity Through Automation** - Automated scripts reduce deployment complexity and ensure consistency
-**Monitoring is Essential** - Comprehensive observability prevents issues before they impact production
-**Testing Validates Everything** - Smoke tests and validation scripts catch problems early
-**Security from Day One** - Build security into the architecture rather than adding it later
-**Documentation Saves Time** - Well-documented configurations and procedures accelerate troubleshooting
+**Simplicity Through Automation** - Automated scripts reduce deployment complexity and ensure consistency  
+**Monitoring is Essential** - Comprehensive observability prevents issues before they impact production  
+**Testing Validates Everything** - Smoke tests and validation scripts catch problems early  
+**Security from Day One** - Build security into the architecture rather than adding it later  
+**Documentation Saves Time** - Well-documented configurations and procedures accelerate troubleshooting  
 
 ### What's Next?
 
 Now that you have a solid Apache Kafka foundation, consider:
 
-- Implementing Schema Registry for message evolution
-- Adding multi-broker setup for true high availability
-- Integrating SSL for encrypted communication
-- Creating custom monitoring dashboards for specific use cases
-- Implementing automated backup and disaster recovery
-- Adding integration with stream processing frameworks
+- Implementing Schema Registry for message evolution  
+- Adding multi-broker setup for true high availability  
+- Integrating SASL/SSL for encrypted communication  
+- Creating custom monitoring dashboards for specific use cases  
+- Implementing automated backup and disaster recovery  
+- Adding integration with stream processing frameworks  
 
 ### Get the Complete Setup
 
@@ -804,19 +846,19 @@ The full repository with all scripts, configurations, and documentation is avail
 
 The repository includes:
 
-- All automation scripts with error handling
-- Production-ready Docker Compose configurations
-- Comprehensive monitoring dashboards
-- Testing and validation frameworks
-- Troubleshooting guides and documentation
+- All automation scripts with error handling  
+- Production-ready Docker Compose configurations  
+- Comprehensive monitoring dashboards  
+- Testing and validation frameworks  
+- Troubleshooting guides and documentation  
 
 ### Questions and Support
 
 If you run into issues or have questions about this setup:
 
-- Open an issue on the GitHub repository
-- Check the troubleshooting section in the documentation
-- Review the smoke test output for specific error details
+- Open an issue on the GitHub repository  
+- Check the troubleshooting section in the documentation  
+- Review the smoke test output for specific error details  
 
 Remember: a well-configured Apache Kafka setup will serve your messaging needs reliably for years. Taking time to properly implement monitoring, testing, and automation upfront saves countless hours of troubleshooting later.
 
