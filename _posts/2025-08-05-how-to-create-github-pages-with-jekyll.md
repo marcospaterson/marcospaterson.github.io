@@ -1,9 +1,10 @@
 ---
 layout: post
 title: "How to Create a GitHub Pages Site with Jekyll: A Step-by-Step Guide"
-date: 2025-08-05 10:00:00 -0000
+date: 2025-08-05 10:00:00 +0000
 categories: [tutorial, jekyll, github-pages]
 tags: [jekyll, github, static-site, blog, tutorial]
+author: Marcos Paterson
 excerpt: "Learn how to create your own GitHub Pages site with Jekyll from scratch. This comprehensive guide covers everything from initial setup to deployment, perfect for developers who want to showcase their projects and share their knowledge through blogging."
 ---
 
@@ -132,7 +133,7 @@ layout: default
       </div>
     </div>
   </section>
-  
+
   <!-- Technologies Section -->
   <section class="py-16">
     <div class="max-w-4xl mx-auto px-6">
@@ -197,13 +198,13 @@ permalink: /contact/
 <div class="min-h-screen bg-gray-50 py-12">
   <div class="max-w-2xl mx-auto px-6">
     <h1 class="text-4xl font-bold text-gray-900 mb-12 text-center">Let's Connect</h1>
-    
+
     <div class="bg-white rounded-lg shadow-sm p-8">
       <p class="text-lg text-gray-700 mb-8">
-        I'm always interested in new opportunities and collaborations. 
+        I'm always interested in new opportunities and collaborations.
         Feel free to reach out!
       </p>
-      
+
       <!-- Contact links -->
       <div class="space-y-4">
         <a href="mailto:your-email@example.com" class="flex items-center text-gray-600 hover:text-gray-800">
@@ -384,7 +385,7 @@ Create `_includes/header.html` for a mobile-friendly navigation:
   <nav class="max-w-6xl mx-auto px-6 py-4">
     <div class="flex justify-between items-center">
       <a href="/" class="text-2xl font-bold text-gray-900">{{ site.title }}</a>
-      
+
       <!-- Desktop Navigation -->
       <div class="hidden md:flex space-x-8">
         <a href="/" class="{% if page.url == '/' %}bg-gray-100 text-gray-800 px-3 py-2 rounded-md
@@ -450,7 +451,7 @@ Congratulations! You now have a modern, professional portfolio site with:
 
 ### Features Implemented:
 - **Clean, responsive design** using Tailwind CSS
-- **Proper code highlighting** with Rouge syntax highlighter  
+- **Proper code highlighting** with Rouge syntax highlighter
 - **Mobile-friendly navigation** with sticky header
 - **Professional typography** using Google Fonts (Roboto)
 - **Blog functionality** for sharing your knowledge

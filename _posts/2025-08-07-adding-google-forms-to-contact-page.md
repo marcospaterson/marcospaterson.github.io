@@ -1,9 +1,10 @@
 ---
 layout: post
 title: "Adding Google Forms to Your Jekyll Contact Page: Easy Contact Form Solution"
-date: 2025-08-07 14:00:00 -0000
+date: 2025-08-07 14:00:00 +0000
 categories: [tutorial, jekyll, google-forms]
 tags: [jekyll, google-forms, contact-form, web-development, tutorial]
+author: Marcos Paterson
 excerpt: "Learn how to integrate Google Forms into your Jekyll contact page for free, reliable contact form functionality without backend development. Perfect for static sites that need user interaction."
 ---
 
@@ -45,11 +46,11 @@ Description: "I'd love to hear from you! Whether you have a question, collaborat
 
 - Name (Short answer, Required)
 - Email (Short answer, Required, Email validation)
-- Subject (Short answer, Required)  
+- Subject (Short answer, Required)
 - Message (Paragraph, Required)
 - How did you find me? (Multiple choice, Optional)
    - Google Search
-   - LinkedIn  
+   - LinkedIn
    - GitHub
    - Social Media
    - Referral
@@ -77,7 +78,7 @@ Description: "I'd love to hear from you! Whether you have a question, collaborat
 
 1. **Click "Send"** at the top of your form
 2. **Select the embed option** (< > icon)
-3. **Adjust dimensions**: 
+3. **Adjust dimensions**:
    - Width: `780px` (good for most layouts)
    - Height: `920px` (adjust based on your form length)
 4. **Copy the iframe code**
@@ -85,11 +86,11 @@ Description: "I'd love to hear from you! Whether you have a question, collaborat
 Your embed code will look like this:
 
 ```html
-<iframe src="https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true" 
-        width="780" 
-        height="920" 
-        frameborder="0" 
-        marginheight="0" 
+<iframe src="https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true"
+        width="780"
+        height="920"
+        frameborder="0"
+        marginheight="0"
         marginwidth="0">
   Loading…
 </iframe>
@@ -107,23 +108,23 @@ permalink: /contact/
 ---
 
 <div class="contact-page">
-  
+
   <!-- Contact Information Section -->
   <section class="contact-methods">
     <h1 class="text-3xl my-2">Where to find me</h1>
-    
+
     <div class="contact-grid">
       <div class="text-start contact-item">
-        <p class="text-left">Email: 
+        <p class="text-left">Email:
           <a href="mailto:your.email@gmail.com">your.email@gmail.com</a>
         </p>
 
-        <p class="text-left mt-2">LinkedIn: 
+        <p class="text-left mt-2">LinkedIn:
           <a href="https://linkedin.com/in/yourprofile" target="_blank">
             linkedin.com/in/yourprofile
           </a>
         </p>
-        
+
         <p class="text-left mt-2">GitHub:
           <a href="https://github.com/yourusername" target="_blank">
             github.com/yourusername
@@ -137,13 +138,13 @@ permalink: /contact/
   <section class="contact-form">
     <h2>Send me a message</h2>
     <p class="mb-4">Use the form below to get in touch. I'll respond as quickly as possible!</p>
-    
+
     <div class="form-container">
-      <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" 
-              width="100%" 
-              height="920" 
-              frameborder="0" 
-              marginheight="0" 
+      <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
+              width="100%"
+              height="920"
+              frameborder="0"
+              marginheight="0"
               marginwidth="0"
               class="google-form">
         Loading contact form...
@@ -154,7 +155,7 @@ permalink: /contact/
   <!-- Additional Information Section -->
   <section class="recruiter-info">
     <h2>For Recruiters & Collaborators</h2>
-    
+
     <div class="recruiter-details">
       <h3>What I'm Looking For</h3>
       <ul>
@@ -181,9 +182,9 @@ permalink: /contact/
 
       <h3>Portfolio & Resume</h3>
       <p>
-        View my latest projects on 
-        <a href="https://github.com/yourusername" target="_blank">GitHub</a> 
-        and connect with me on 
+        View my latest projects on
+        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+        and connect with me on
         <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>.
       </p>
     </div>
@@ -199,13 +200,13 @@ To make your Google Form blend seamlessly with your site design, add this CSS to
 // Contact form styling
 .contact-form {
   margin: 3rem 0;
-  
+
   h2 {
     text-align: center;
     margin-bottom: 1rem;
     color: #333;
   }
-  
+
   p {
     text-align: center;
     color: #666;
@@ -219,7 +220,7 @@ To make your Google Form blend seamlessly with your site design, add this CSS to
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   border: 1px solid #e9ecef;
-  
+
   // Responsive iframe container
   position: relative;
   width: 100%;
@@ -232,7 +233,7 @@ To make your Google Form blend seamlessly with your site design, add this CSS to
   border: none;
   width: 100%;
   min-height: 920px;
-  
+
   // Remove default iframe styling
   background: transparent;
 }
@@ -246,16 +247,16 @@ To make your Google Form blend seamlessly with your site design, add this CSS to
     border-left: none;
     border-right: none;
   }
-  
+
   .google-form {
     min-height: 800px;
   }
-  
+
   .contact-form {
     h2 {
       font-size: 1.8rem;
     }
-    
+
     p {
       font-size: 0.9rem;
       padding: 0 1rem;
@@ -292,7 +293,7 @@ Google automatically creates a spreadsheet with all form responses:
 ```bash
 **Google Sheets Integration:**
 - Automatic data collection
-- Export to CSV for analysis  
+- Export to CSV for analysis
 - Create charts and analytics
 - Set up additional email triggers
 
@@ -316,11 +317,11 @@ After form submission, users see a default Google message. Customize it:
 ```
 Thank you for reaching out!
 
-I've received your message and will get back to you within 24-48 hours. 
+I've received your message and will get back to you within 24-48 hours.
 
 In the meantime, feel free to:
 • Check out my latest projects on GitHub
-• Connect with me on LinkedIn  
+• Connect with me on LinkedIn
 • Follow my blog for updates
 
 Looking forward to our conversation!
@@ -340,7 +341,7 @@ Example use case:
 ```
 Question: "What type of inquiry is this?"
 - Job Opportunity → Go to "Job Details" section
-- Collaboration → Go to "Project Details" section  
+- Collaboration → Go to "Project Details" section
 - General Question → Go to "Contact Info" section
 ```
 
@@ -354,7 +355,7 @@ For better responsive behavior and styling:
   width: 100%;
   max-width: 800px;
   margin: 2rem auto;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -374,7 +375,7 @@ For better responsive behavior and styling:
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  
+
   iframe {
     border: none;
     width: 100%;
@@ -392,7 +393,7 @@ Before going live, test your contact form thoroughly:
 ```bash
 **Functionality Tests:**
 - [ ] Form loads properly on desktop
-- [ ] Form loads properly on mobile  
+- [ ] Form loads properly on mobile
 - [ ] All required fields work
 - [ ] Email validation works
 - [ ] Submission completes successfully
@@ -441,7 +442,7 @@ Based on usage data:
 
 **High Abandon Rate?**
 - Simplify form fields
-- Reduce required fields  
+- Reduce required fields
 - Improve loading speed
 - Add progress indicators
 
@@ -498,7 +499,7 @@ All the code examples from this tutorial are implemented on this very site:
 ✅ Configure settings and notifications
 ✅ Get embed code
 
-# 2. Update Jekyll contact page  
+# 2. Update Jekyll contact page
 ✅ Add iframe code to contact.md
 ✅ Include contact information section
 ✅ Add recruiter/professional details

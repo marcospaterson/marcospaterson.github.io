@@ -5,11 +5,8 @@ date: 2025-08-14 15:00:00 +0000
 categories: [web-development, analytics, github-pages, jekyll]
 tags: [google-analytics, privacy, gdpr, jekyll, github-pages, ga4]
 author: Marcos Paterson
-description: "Learn how to implement Google Analytics 4 on your GitHub Pages Jekyll site with privacy-first configuration, GDPR compliance, and custom tracking for blog content."
-image: /assets/images/google-analytics-github-pages.png
+excerpt: "Learn how to implement Google Analytics 4 on your GitHub Pages Jekyll site with privacy-first configuration, GDPR compliance, and custom tracking for blog content."
 ---
-
-<img src="/assets/images/google-analytics-github-pages.png" alt="Google Analytics GitHub Pages Setup" class="post-thumbnail" style="width: 100%; max-width: 600px; height: auto; margin: 20px 0;">
 
 Understanding your website's performance and user behavior is crucial for creating better content and improving user experience. In this comprehensive guide, I'll show you how to add Google Analytics 4 (GA4) to your GitHub Pages Jekyll site with a privacy-first approach that respects your visitors while giving you valuable insights.
 
@@ -20,7 +17,7 @@ This isn't just a basic "copy and paste" tutorial – we'll implement GDPR-compl
 Modern web analytics can be invasive, but it doesn't have to be. This implementation:
 
 - **Anonymizes IP addresses** before processing
-- **Disables advertising features** completely  
+- **Disables advertising features** completely
 - **Respects user privacy** while collecting useful data
 - **Complies with GDPR** and other privacy regulations
 
@@ -44,7 +41,7 @@ url: "https://yourusername.github.io"
 # Analytics configuration
 google_analytics: G-TRZ85JG6LN  # Replace with your actual ID
 analytics:
-  provider: "google-gtag" 
+  provider: "google-gtag"
   google:
     tracking_id: "G-TRZ85JG6LN"  # Same as above
     anonymize_ip: true
@@ -66,17 +63,17 @@ The core of our implementation is a custom Google Analytics include file that pr
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  
+
   gtag('config', '{{ site.google_analytics }}', {
     // Privacy settings
     anonymize_ip: true,
     allow_google_signals: false,
     allow_ad_personalization_signals: false,
-    
-    // Performance settings  
+
+    // Performance settings
     send_page_view: true,
     cookie_expires: 63072000,  // 2 years
-    
+
     // Custom dimensions for blog analytics
     custom_map: {
       'dimension1': 'post_category',
@@ -111,7 +108,7 @@ This ensures analytics only run on your live site, not during local development.
 Transparency is key to ethical analytics. Create a privacy policy that explains:
 
 - What data you collect and why
-- How you protect user privacy  
+- How you protect user privacy
 - User rights and opt-out options
 - Cookie usage and retention policies
 

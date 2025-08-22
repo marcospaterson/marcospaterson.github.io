@@ -1,13 +1,14 @@
 ---
 layout: post
 title: "GitHub Actions vs Standard GitHub Pages: Complete Setup Guide for Jekyll Sites"
-date: 2025-08-07 16:00:00 -0000
+date: 2025-08-07 16:00:00 +0000
 categories: [tutorial, github-actions, jekyll, deployment]
 tags: [github-actions, github-pages, jekyll, ci-cd, deployment, tutorial]
+author: Marcos Paterson
 excerpt: "Learn how to set up GitHub Actions for Jekyll deployment and discover when you should choose GitHub Actions over standard GitHub Pages. Complete with step-by-step setup, pros/cons analysis, and troubleshooting guide."
 ---
 
-When deploying Jeky## Real-World Examplel sites to GitHub Pages, you have two main options: **Standard GitHub Pages** deployment and **GitHub Actions** deployment. While standard deployment works great for basic sites, GitHub Actions offers more control and flexibility - but with added complexity.
+When deploying Jekyll sites to GitHub Pages, you have two main options: **Standard GitHub Pages** deployment and **GitHub Actions** deployment. While standard deployment works great for basic sites, GitHub Actions offers more control and flexibility - but with added complexity.
 
 In this comprehensive guide, I'll walk you through both approaches, explain when to use each, and provide step-by-step instructions for setting up GitHub Actions deployment.
 
@@ -16,7 +17,7 @@ In this comprehensive guide, I'll walk you through both approaches, explain when
 ### Standard GitHub Pages Deployment
 GitHub's built-in Jekyll processing that automatically builds and deploys your site when you push to your repository.
 
-### GitHub Actions Deployment  
+### GitHub Actions Deployment
 A custom workflow that gives you full control over the build environment and process, then deploys to GitHub Pages.
 
 Let's dive into when and why you'd choose each approach.
@@ -189,7 +190,7 @@ on:
 ```yaml
 permissions:
   contents: read    # Read repository contents
-  pages: write      # Deploy to GitHub Pages  
+  pages: write      # Deploy to GitHub Pages
   id-token: write   # OIDC token for secure deployment
 ```
 
@@ -223,7 +224,7 @@ permissions:
   run: bundle exec jekyll build --config _config.yml,_config.staging.yml
   if: github.ref == 'refs/heads/develop'
 
-- name: Build for production  
+- name: Build for production
   run: bundle exec jekyll build --config _config.yml,_config.production.yml
   if: github.ref == 'refs/heads/main'
 ```
@@ -273,7 +274,7 @@ permissions:
 # Solution: Ensure Gemfile includes all dependencies
 group :jekyll_plugins do
   gem "jekyll-feed"
-  gem "jekyll-sitemap"  
+  gem "jekyll-sitemap"
   gem "jekyll-seo-tag"  # Add missing gems
 end
 ```
@@ -372,7 +373,7 @@ Plugin Support: Restricted
 
 ### GitHub Actions:
 ```
-Build Time: 60-180 seconds  
+Build Time: 60-180 seconds
 Reliability: High
 Customization: Complete
 Plugin Support: Unlimited
