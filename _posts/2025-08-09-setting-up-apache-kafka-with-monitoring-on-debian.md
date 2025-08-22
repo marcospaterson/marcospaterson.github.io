@@ -16,13 +16,13 @@ This isn't just another "quick start" tutorial – it's a complete production de
 
 By the end of this guide, you'll have:
 
-■ Production-ready Apache Kafka 3.7.0 cluster with KRaft mode
-■ Comprehensive monitoring with Prometheus, Grafana, and specialized exporters
-■ Automated deployment scripts for reproducible setups
-■ Security hardening with firewall and access controls
-■ Topic management automation for different use cases
-■ Performance testing and validation tools
-■ Complete observability stack with dashboards and alerting
+- Production-ready Apache Kafka 3.7.0 cluster with KRaft mode  
+- Comprehensive monitoring with Prometheus, Grafana, and specialized exporters  
+- Automated deployment scripts for reproducible setups  
+- Security hardening with firewall and access controls  
+- Topic management automation for different use cases  
+- Performance testing and validation tools  
+- Complete observability stack with dashboards and alerting
 
 ## Architecture Overview
 
@@ -54,11 +54,11 @@ Our setup follows a containerized approach with comprehensive observability:
 
 This architecture provides:
 
-■ Isolation through containerization
-■ Scalable messaging with Apache Kafka KRaft mode
-■ Complete observability with metrics collection
-■ Data persistence via Docker volumes
-■ Network isolation with custom Docker networks
+- Isolation through containerization
+- Scalable messaging with Apache Kafka KRaft mode
+- Complete observability with metrics collection
+- Data persistence via Docker volumes
+- Network isolation with custom Docker networks
 
 ## Quick Start
 
@@ -90,11 +90,11 @@ But let's dive deeper into each component to understand what's happening and why
 
 Before we begin, ensure you have:
 
-■ Debian 12 (Bookworm) VM with root access
-■ Minimum 4GB RAM and 40GB storage
-■ Network connectivity and sudo privileges
-■ Docker and Docker Compose installed
-■ Basic Linux administration knowledge
+- Debian 12 (Bookworm) VM with root access
+- Minimum 4GB RAM and 40GB storage
+- Network connectivity and sudo privileges
+- Docker and Docker Compose installed
+- Basic Linux administration knowledge
 
 ## Phase 1: System Foundation Setup
 
@@ -117,10 +117,10 @@ services:
 
 This isn't just basic containerization – it includes:
 
-■ Health checks for automatic recovery
-■ Network isolation with custom networks
-■ Volume persistence for data durability
-■ Resource limits for stable operation
+- Health checks for automatic recovery
+- Network isolation with custom networks
+- Volume persistence for data durability
+- Resource limits for stable operation
 
 ### Apache Kafka in KRaft Mode
 
@@ -139,10 +139,10 @@ environment:
 
 Why KRaft mode matters:
 
-■ Eliminates Zookeeper dependency reducing complexity
-■ Better metadata handling and faster recovery
-■ Simplified security configuration
-■ Improved partition scaling capabilities
+- Eliminates Zookeeper dependency reducing complexity
+- Better metadata handling and faster recovery
+- Simplified security configuration
+- Improved partition scaling capabilities
 
 ### Network Configuration Strategy
 
@@ -159,10 +159,10 @@ networks:
 
 This provides:
 
-■ Isolated network segment for Kafka services
-■ Predictable IP addressing within containers
-■ Controlled communication between components
-■ Security boundary for the messaging platform
+- Isolated network segment for Kafka services
+- Predictable IP addressing within containers
+- Controlled communication between components
+- Security boundary for the messaging platform
 
 ## Phase 2: Comprehensive Monitoring Stack
 
@@ -201,10 +201,10 @@ scrape_configs:
 
 This setup ensures:
 
-■ Kafka-specific metrics collection
-■ System-level resource monitoring
-■ Configurable scraping intervals
-■ Persistent time-series storage
+- Kafka-specific metrics collection
+- System-level resource monitoring
+- Configurable scraping intervals
+- Persistent time-series storage
 
 ### Specialized Kafka Monitoring
 
@@ -223,10 +223,10 @@ kafka-exporter:
 
 Key metrics exposed include:
 
-■ Topic partition counts and status
-■ Consumer group lag monitoring
-■ Broker availability and leadership
-■ Message throughput and error rates
+- Topic partition counts and status
+- Consumer group lag monitoring
+- Broker availability and leadership
+- Message throughput and error rates
 
 ### Grafana Dashboard Integration
 
@@ -247,10 +247,10 @@ grafana:
 
 The dashboard includes panels for:
 
-■ Kafka broker health and status
-■ Topic throughput and partition distribution
-■ Consumer lag trending and alerting
-■ System resource utilization
+- Kafka broker health and status
+- Topic throughput and partition distribution
+- Consumer lag trending and alerting
+- System resource utilization
 
 ## Phase 3: Topic Management and Configuration
 
@@ -293,10 +293,10 @@ create_topic "quotes" 6 1 \
 
 Features:
 
-■ 6 partitions for parallel processing
-■ 1-hour retention for real-time data
-■ LZ4 compression for speed
-■ Delete cleanup policy for storage efficiency
+- 6 partitions for parallel processing
+- 1-hour retention for real-time data
+- LZ4 compression for speed
+- Delete cleanup policy for storage efficiency
 
 ### Compacted State Topics
 
@@ -310,10 +310,10 @@ create_topic "pricing-results" 3 1 \
 
 Benefits:
 
-■ Compaction preserves latest values per key
-■ Reduced storage requirements
-■ Fast state reconstruction
-■ Configurable compaction thresholds
+- Compaction preserves latest values per key
+- Reduced storage requirements
+- Fast state reconstruction
+- Configurable compaction thresholds
 
 ### Audit and Compliance Topics
 
@@ -327,10 +327,10 @@ create_topic "audit-logs" 2 1 \
 
 This ensures:
 
-■ 31-day retention for compliance
-■ GZIP compression for storage efficiency
-■ Immutable audit trail
-■ Regulatory requirement fulfillment
+- 31-day retention for compliance
+- GZIP compression for storage efficiency
+- Immutable audit trail
+- Regulatory requirement fulfillment
 
 ## Phase 4: Testing and Validation Framework
 
@@ -357,11 +357,11 @@ test_kafka_connectivity() {
 
 The testing framework includes:
 
-■ Container health verification
-■ Network connectivity testing
-■ Topic creation validation
-■ Producer/consumer functionality
-■ Monitoring endpoint checks
+- Container health verification
+- Network connectivity testing
+- Topic creation validation
+- Producer/consumer functionality
+- Monitoring endpoint checks
 
 ### Producer/Consumer Testing
 
@@ -386,10 +386,10 @@ test_producer_consumer() {
 
 This validates:
 
-■ Message production capabilities
-■ Consumer group functionality
-■ End-to-end message delivery
-■ Data integrity verification
+- Message production capabilities
+- Consumer group functionality
+- End-to-end message delivery
+- Data integrity verification
 
 ### Monitoring System Validation
 
@@ -433,10 +433,10 @@ check_consumer_lag() {
 
 This provides:
 
-■ Real-time lag monitoring
-■ Consumer group status
-■ Partition assignment details
-■ Performance troubleshooting data
+- Real-time lag monitoring
+- Consumer group status
+- Partition assignment details
+- Performance troubleshooting data
 
 ### Security and ACL Management
 
@@ -461,10 +461,10 @@ setup_user_acls() {
 
 Security features include:
 
-■ Role-based access control
-■ Topic-level permissions
-■ User authentication
-■ Audit trail logging
+- Role-based access control
+- Topic-level permissions
+- User authentication
+- Audit trail logging
 
 ## Configuration Deep Dive
 
@@ -489,10 +489,10 @@ environment:
 
 These optimizations provide:
 
-■ Enhanced network throughput
-■ Improved I/O performance
-■ Appropriate buffer sizing
-■ Efficient log management
+- Enhanced network throughput
+- Improved I/O performance
+- Appropriate buffer sizing
+- Efficient log management
 
 ### Monitoring Configuration
 
@@ -515,10 +515,10 @@ providers:
 
 Dashboard panels include:
 
-■ Broker availability and leadership
-■ Topic throughput and partition count
-■ Consumer lag trends and alerting
-■ System resource utilization
+- Broker availability and leadership
+- Topic throughput and partition count
+- Consumer lag trends and alerting
+- System resource utilization
 
 ## Performance Optimization
 
@@ -789,12 +789,12 @@ Setting up a production-ready Apache Kafka cluster with comprehensive monitoring
 
 Now that you have a solid Apache Kafka foundation, consider:
 
-■ Implementing Schema Registry for message evolution
-■ Adding multi-broker setup for true high availability
-■ Integrating SSL for encrypted communication
-■ Creating custom monitoring dashboards for specific use cases
-■ Implementing automated backup and disaster recovery
-■ Adding integration with stream processing frameworks
+- Implementing Schema Registry for message evolution
+- Adding multi-broker setup for true high availability
+- Integrating SSL for encrypted communication
+- Creating custom monitoring dashboards for specific use cases
+- Implementing automated backup and disaster recovery
+- Adding integration with stream processing frameworks
 
 ### Get the Complete Setup
 
@@ -804,19 +804,19 @@ The full repository with all scripts, configurations, and documentation is avail
 
 The repository includes:
 
-■ All automation scripts with error handling
-■ Production-ready Docker Compose configurations
-■ Comprehensive monitoring dashboards
-■ Testing and validation frameworks
-■ Troubleshooting guides and documentation
+- All automation scripts with error handling
+- Production-ready Docker Compose configurations
+- Comprehensive monitoring dashboards
+- Testing and validation frameworks
+- Troubleshooting guides and documentation
 
 ### Questions and Support
 
 If you run into issues or have questions about this setup:
 
-■ Open an issue on the GitHub repository
-■ Check the troubleshooting section in the documentation
-■ Review the smoke test output for specific error details
+- Open an issue on the GitHub repository
+- Check the troubleshooting section in the documentation
+- Review the smoke test output for specific error details
 
 Remember: a well-configured Apache Kafka setup will serve your messaging needs reliably for years. Taking time to properly implement monitoring, testing, and automation upfront saves countless hours of troubleshooting later.
 
