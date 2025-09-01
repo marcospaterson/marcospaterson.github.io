@@ -136,28 +136,4 @@ This economic calendar provides essential timing for traders, investors, and ana
 
 *All times listed are in Eastern Time (ET) unless otherwise specified. Economic data release times are approximate and subject to change.*
 
-**PMI Readings:**
-- **China Caixin PMIs**: Early indicators that often drive global risk sentiment at the start of each trading session
-- **US Manufacturing/Services PMIs**: Final August readings will confirm or challenge preliminary estimates
-- **Eurozone PMI Finals**: Manufacturing and services strength indicators for the bloc's economic trajectory
-
-**Earnings Focus:**
-- **Broadcom (Thursday after market close)**: Semiconductor and enterprise software giant's results will impact tech sector sentiment
-- **Salesforce (Wednesday after market close)**: Cloud software leader's guidance critical for enterprise spending trends
-- **Technology Earnings Cluster**: Zscaler, HPE, Lululemon, and DocuSign provide diverse sector insights
-
-**Central Bank Actions:**
-- **Bank of Canada Rate Decision**: Potential for rate cuts amid economic softening
-- **Fed Beige Book**: Regional economic conditions ahead of September FOMC meeting
-
-### Key Themes to Watch
-
-1. **Labor Market Trajectory**: Employment data strength versus Fed rate cut expectations for September 17 meeting
-2. **Global Manufacturing Momentum**: PMI readings across major economies signal economic health
-3. **Technology Sector Earnings**: Enterprise spending and semiconductor demand indicators
-4. **Energy Market Volatility**: Holiday-shifted oil inventory data could create unusual trading patterns
-5. **Central Bank Policy Divergence**: Bank of Canada actions versus Fed expectations
-
-This economic calendar provides essential timing for traders, investors, and analysts monitoring global economic developments and market-moving events throughout the shortened Labor Day week.
-
 ---
